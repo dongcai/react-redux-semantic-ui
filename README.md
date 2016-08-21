@@ -15,8 +15,6 @@ This is a starter boilerplate app I've put together using the following technolo
 * [React](https://github.com/facebook/react)
 * [React Router](https://github.com/reactjs/react-router)
 * [Express](http://expressjs.com)
-* [Passport](http://passportjs.org) for authentication
-* [Knex](http://knexjs.org/) with [Bookshelf](http://bookshelfjs.org/) to use database and migrations
 * [Babel](http://babeljs.io) for ES6 and ES7 magic
 * [Webpack](http://webpack.github.io) for bundling
 * [Webpack Dev Middleware](http://webpack.github.io/docs/webpack-dev-middleware.html)
@@ -41,48 +39,6 @@ I cobbled this together from a wide variety of similar "starter" repositories. A
 ```bash
 npm install
 ```
-
-Now you must select your database system into the following and install them:
- 
-Postgres, MSSQL, MySQL, MariaDB, SQLite3, and Oracle are supported.
-
-```bash
-for example:
- npm install mysql [--save]
-```
-
-You must then configure the database client in `knexfile.js` file (http://knexjs.org/#Installation-client) for each environment, eg:
-```bash
-development: {
-  client: 'mysql',
-  connection: {
-    database: 'myapp_dev',
-    user:     'root',
-    password: 'grut'
-  },
-  migrations: {
-    tableName: 'migrations',
-    directory: './api/database/migrations'
-  }
-},
-
-production: {
-  ...
-}
-```
-
-If you will use migrations, you must install `knex` globally (http://knexjs.org/#Migrations-CLI)
-
-```bash
-npm install knex -g
-```
-
-and run the following command:
-
-```bash
-knex migrate:latest [--env production|development]
-```
-
 
 ## Running Dev Server
 

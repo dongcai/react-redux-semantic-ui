@@ -1,33 +1,15 @@
-import app from 'app';
-
 const LOAD = 'redux-example/auth/LOAD';
 const LOAD_SUCCESS = 'redux-example/auth/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/auth/LOAD_FAIL';
 const LOGIN = 'redux-example/auth/LOGIN';
 const LOGIN_SUCCESS = 'redux-example/auth/LOGIN_SUCCESS';
 const LOGIN_FAIL = 'redux-example/auth/LOGIN_FAIL';
-const REGISTER = 'redux-example/auth/REGISTER';
-const REGISTER_SUCCESS = 'redux-example/auth/REGISTER_SUCCESS';
-const REGISTER_FAIL = 'redux-example/auth/REGISTER_FAIL';
 const LOGOUT = 'redux-example/auth/LOGOUT';
 const LOGOUT_SUCCESS = 'redux-example/auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = 'redux-example/auth/LOGOUT_FAIL';
 
-const userService = app.service('users');
-
 const initialState = {
   loaded: false
-};
-
-const catchValidation = error => {
-  console.log(error);
-  if (error.message) {
-    if (error.message === 'Validation failed' && error.data) {
-      return Promise.reject(error.data);
-    }
-    return Promise.reject({ _error: error.message });
-  }
-  return Promise.reject(error);
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -42,8 +24,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        token: action.result.token,
-        user: action.result.user
+        user: action.result
       };
     case LOAD_FAIL:
       return {
@@ -61,30 +42,12 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loggingIn: false,
-        token: action.result.token,
-        user: action.result.user
+        user: action.result
       };
     case LOGIN_FAIL:
       return {
         ...state,
         loggingIn: false,
-        token: null,
-        loginError: action.error
-      };
-    case REGISTER:
-      return {
-        ...state,
-        registeringIn: true
-      };
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        registeringIn: false
-      };
-    case REGISTER_FAIL:
-      return {
-        ...state,
-        registeringIn: false,
         loginError: action.error
       };
     case LOGOUT:
@@ -96,8 +59,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loggingOut: false,
-        user: null,
-        token: null
+        user: null
       };
     case LOGOUT_FAIL:
       return {
@@ -121,32 +83,16 @@ export function load() {
   };
 }
 
-export function register(data) {
-  return {
-    types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
-    promise: () => userService.create(data).catch(catchValidation)
-  };
-}
-
 export function login(data) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
-    promise: () => app.authenticate({
-      type: 'local',
-      email: data.email,
-      password: data.password
-    }).then(result => {
-      console.log(app.get('token')); // -> the JWT
-      console.log(app.get('user')); // -> the user
-
-      return result;
-    }).catch(catchValidation)
+    promise: client => client.post('/auth/login', { data })
   };
 }
 
 export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
-    promise: () => app.logout()
+    promise: client => client.post('/auth/logout')
   };
 }

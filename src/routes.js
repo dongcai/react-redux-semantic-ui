@@ -1,7 +1,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
-import { App, Chat, Home, Widgets, About, Register, Login, LoginSuccess, Survey, NotFound } from 'containers';
+import { App, Chat, Home, Widgets, About, Login, LoginSuccess, Survey, NotFound } from 'containers';
 
 export default (store) => {
   function checkAuth(logged, replace, cb) {
@@ -42,7 +42,7 @@ export default (store) => {
 
       {/* Routes disallow login */}
       <Route onEnter={requireNotLogged}>
-        <Route path="register" component={Register} />
+        {/* <Route path="register" component={Register} /> */}
       </Route>
 
       {/* Routes */}

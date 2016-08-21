@@ -20,17 +20,7 @@ function createValidatorPromise(rules, params) {
   };
 }
 
-function unique(field) {
-  return (value, data, { service }) => service.find({ query: { [field]: value } })
-    .then(result => {
-      if (result.total !== 0) {
-        return Promise.reject('Already exist');
-      }
-    });
-}
-
 module.exports = {
   ...validation,
-  unique,
   createValidatorPromise
 };
