@@ -1,10 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import NavItem from 'react-bootstrap/lib/NavItem';
 
 @connect(
   state => ({ user: state.auth.user })
 )
 export default class Chat extends Component {
+  static navbarItem = {
+    pos: 2,
+    item: () => (
+      <LinkContainer to="/chat">
+        <NavItem eventKey={1}>Chat</NavItem>
+      </LinkContainer>
+    )
+  };
 
   static propTypes = {
     user: PropTypes.object

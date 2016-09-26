@@ -5,8 +5,9 @@ import {
   App, Chat, ChatFeathers, Home, Widgets, About,
   Register, Login, LoginSuccess, Survey, NotFound
 } from 'containers';
+import mapRoutes from './utils/mapRoutes';
 
-export default (store) => {
+export default store => {
   const loadAuthIfNeeded = cb => {
     if (!isAuthLoaded(store.getState())) {
       return store.dispatch(loadAuth()).then(() => cb());
@@ -20,18 +21,16 @@ export default (store) => {
   };
 
   const requireNotLogged = (nextState, replace, cb) => {
-    const cond = user => !user;
-    loadAuthIfNeeded(() => checkUser(cond, replace, cb));
+    loadAuthIfNeeded(() => checkUser(user => !user, replace, cb));
   };
   const requireLogin = (nextState, replace, cb) => {
-    const cond = user => !!user;
-    loadAuthIfNeeded(() => checkUser(cond, replace, cb));
+    loadAuthIfNeeded(() => checkUser(user => !!user, replace, cb));
   };
 
   /**
    * Please keep routes in alphabetical order
    */
-  return (
+  let routes = (
     <Route path="/" component={App}>
       {/* Home (main) route */}
       <IndexRoute component={Home} />
@@ -58,4 +57,15 @@ export default (store) => {
       <Route path="*" component={NotFound} status={404} />
     </Route>
   );
+
+  // TODO function injectReactRouterHooks(injectTo, getter, filter?)
+
+  /*
+  * injectReactRouterHooks('/', c => c.navbarItem, v => v !== undefined)(routes)
+  * */
+
+  const navbarItems = mapRoutes(routes, c => c.navbarItem).filter(v => v !== undefined);
+  routes = React.cloneElement(routes, { navbarItems });
+
+  return routes;
 };

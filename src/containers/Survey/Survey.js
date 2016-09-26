@@ -3,11 +3,22 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { initialize } from 'redux-form';
 import { SurveyForm } from 'components';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import NavItem from 'react-bootstrap/lib/NavItem';
 
 @connect(
   () => ({}),
   { initialize })
 export default class Survey extends Component {
+  static navbarItem = {
+    pos: 4,
+    item: () => (
+      <LinkContainer to="/survey">
+        <NavItem eventKey={3}>Survey</NavItem>
+      </LinkContainer>
+    )
+  };
+
   static propTypes = {
     initialize: PropTypes.func.isRequired
   }

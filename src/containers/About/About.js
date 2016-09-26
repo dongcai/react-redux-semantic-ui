@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { MiniInfoBar } from 'components';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import NavItem from 'react-bootstrap/lib/NavItem';
 
 export default class About extends Component {
+  static navbarItem = {
+    pos: 5,
+    item: () => (
+      <LinkContainer to="/about">
+        <NavItem eventKey={4}>About Us</NavItem>
+      </LinkContainer>
+    )
+  };
 
   state = {
     showKitten: false

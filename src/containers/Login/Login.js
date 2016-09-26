@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { LoginForm, FacebookLogin } from 'components';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import NavItem from 'react-bootstrap/lib/NavItem';
 import * as authActions from 'redux/modules/auth';
 import * as notifActions from 'redux/modules/notifs';
 
@@ -9,6 +11,15 @@ import * as notifActions from 'redux/modules/notifs';
   state => ({ user: state.auth.user }),
   { ...notifActions, ...authActions })
 export default class Login extends Component {
+  static navbarItem = {
+    pos: 6,
+    item: ({ user }) => (
+      !user && <LinkContainer to="/login">
+        <NavItem eventKey={5}>Login</NavItem>
+      </LinkContainer>
+    )
+  };
+
   static propTypes = {
     user: PropTypes.object,
     login: PropTypes.func,

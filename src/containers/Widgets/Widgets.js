@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as widgetActions from 'redux/modules/widgets';
 import { WidgetForm } from 'components';
 import { asyncConnect } from 'redux-connect';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import NavItem from 'react-bootstrap/lib/NavItem';
 
 const { isLoaded, load: loadWidgets } = widgetActions;
 
@@ -24,6 +26,15 @@ const { isLoaded, load: loadWidgets } = widgetActions;
   }),
   { ...widgetActions })
 export default class Widgets extends Component {
+  static navbarItem = {
+    pos: 3,
+    item: () => (
+      <LinkContainer to="/widgets">
+        <NavItem eventKey={2}>Widgets</NavItem>
+      </LinkContainer>
+    )
+  };
+
   static propTypes = {
     widgets: PropTypes.array,
     error: PropTypes.string,

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { IndexLink } from 'react-router';
-import { LinkContainer } from 'react-router-bootstrap';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
@@ -38,6 +38,7 @@ export default class App extends Component {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
     notifs: PropTypes.object,
+    route: PropTypes.object,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
   };
@@ -61,8 +62,14 @@ export default class App extends Component {
     this.props.logout();
   };
 
+  sortByPos = (a, b) => {
+    if (a.pos < b.pos) return -1;
+    if (a.pos > b.pos) return 1;
+    return 0;
+  };
+
   render() {
-    const { user, notifs } = this.props;
+    const { user, notifs, route: { navbarItems } } = this.props;
     const styles = require('./App.scss');
 
     return (
@@ -81,29 +88,8 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              {user && <LinkContainer to="/chatFeathers">
-                <NavItem>Chat with Feathers</NavItem>
-              </LinkContainer>}
+              {navbarItems.sort(this.sortByPos).map(({ item: Item }, i) => <Item key={i} user={user} />)}
 
-              <LinkContainer to="/chat">
-                <NavItem eventKey={1}>Chat</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/widgets">
-                <NavItem eventKey={2}>Widgets</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/survey">
-                <NavItem eventKey={3}>Survey</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/about">
-                <NavItem eventKey={4}>About Us</NavItem>
-              </LinkContainer>
-
-              {!user && <LinkContainer to="/login">
-                <NavItem eventKey={5}>Login</NavItem>
-              </LinkContainer>}
-              {!user && <LinkContainer to="/register">
-                <NavItem eventKey={6}>Register</NavItem>
-              </LinkContainer>}
               {user && <LinkContainer to="/logout">
                 <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>
                   Logout

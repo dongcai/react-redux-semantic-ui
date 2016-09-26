@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import app from 'app';
 import { addMessage } from 'redux/modules/chat';
+import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+import NavItem from 'react-bootstrap/lib/NavItem';
 
 @connect(
   state => ({
@@ -11,6 +13,14 @@ import { addMessage } from 'redux/modules/chat';
   { addMessage }
 )
 export default class ChatFeathers extends Component {
+  static navbarItem = {
+    pos: 1,
+    item: ({ user }) => (
+      user && <LinkContainer to="/chatFeathers">
+        <NavItem>Chat with Feathers</NavItem>
+      </LinkContainer>
+    )
+  };
 
   static propTypes = {
     user: PropTypes.object,
