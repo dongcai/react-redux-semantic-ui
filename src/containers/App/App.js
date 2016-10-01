@@ -62,11 +62,7 @@ export default class App extends Component {
     this.props.logout();
   };
 
-  sortByPos = (a, b) => {
-    if (a.pos < b.pos) return -1;
-    if (a.pos > b.pos) return 1;
-    return 0;
-  };
+  sortBy = fn => (a, b) => (fn(a) < fn(b) && -1) || (fn(a) > fn(b) && 1) || 0;
 
   render() {
     const { user, notifs, route: { navbarItems } } = this.props;
@@ -88,7 +84,7 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              {navbarItems.sort(this.sortByPos).map(({ item: Item }, i) => <Item key={i} user={user} />)}
+              {navbarItems.sort(this.sortBy(v => v.pos)).map(({ item: Item }, i) => <Item key={i} user={user} />)}
 
               {user && <LinkContainer to="/logout">
                 <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>

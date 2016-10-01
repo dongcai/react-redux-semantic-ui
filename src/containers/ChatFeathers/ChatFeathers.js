@@ -13,12 +13,27 @@ import NavItem from 'react-bootstrap/lib/NavItem';
   { addMessage }
 )
 export default class ChatFeathers extends Component {
-  static navbarItem = {
+  /* static navbarItem = {
     pos: 1,
     item: ({ user }) => (
       user && <LinkContainer to="/chatFeathers">
         <NavItem>Chat with Feathers</NavItem>
       </LinkContainer>
+    )
+  }; */
+
+  // An example of react router hook connected to redux
+  static navbarItem = {
+    pos: 1,
+    item: connect(
+      state => ({
+        authenticated: state.auth.user
+      }))(
+      props => (
+        props.authenticated && <LinkContainer to="/chatFeathers">
+          <NavItem>Chat with Feathers</NavItem>
+        </LinkContainer>
+      )
     )
   };
 

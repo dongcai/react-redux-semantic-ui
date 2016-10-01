@@ -2,7 +2,7 @@ export default function mapRoutes(route, cb = c => c) {
   let result = [];
 
   if (Array.isArray(route)) {
-    route.forEach((r) => {
+    route.forEach(r => {
       result = result.concat(mapRoutes(r, cb));
     });
 

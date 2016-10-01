@@ -30,8 +30,8 @@ export default store => {
   /**
    * Please keep routes in alphabetical order
    */
-  let routes = (
-    <Route path="/" component={App}>
+  const routes = (navbarItems) => (
+    <Route path="/" component={App} navbarItems={navbarItems}>
       {/* Home (main) route */}
       <IndexRoute component={Home} />
 
@@ -58,14 +58,7 @@ export default store => {
     </Route>
   );
 
-  // TODO function injectReactRouterHooks(injectTo, getter, filter?)
+  const navbarItems = mapRoutes(routes(), component => component.navbarItem).filter(v => v !== undefined);
 
-  /*
-  * injectReactRouterHooks('/', c => c.navbarItem, v => v !== undefined)(routes)
-  * */
-
-  const navbarItems = mapRoutes(routes, c => c.navbarItem).filter(v => v !== undefined);
-  routes = React.cloneElement(routes, { navbarItems });
-
-  return routes;
+  return routes(navbarItems);
 };
