@@ -3,17 +3,19 @@ import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
 import { reducer as reduxAsyncConnect } from 'redux-connect';
 import { reducer as form } from 'redux-form';
+import * as modules from '../../plugins/modules';
 import auth from './modules/auth';
 import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 import widgets from './modules/widgets';
-import chat from './modules/chat';
+import survey from './modules/survey';
 
 export default combineReducers({
   routing: routerReducer,
   reduxAsyncConnect,
   form,
+  ...modules,
   notifs,
   auth,
   counter: multireducer({
@@ -23,5 +25,5 @@ export default combineReducers({
   }),
   info,
   widgets,
-  chat
+  survey
 });

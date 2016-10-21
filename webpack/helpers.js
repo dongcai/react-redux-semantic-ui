@@ -19,7 +19,7 @@ function createSourceLoader(spec) {
 
     return x;
   }, {
-    include: [path.resolve(__dirname, '../src')]
+    include: [path.resolve(__dirname, '../src'), path.resolve(__dirname, '../plugins')]
   });
 }
 

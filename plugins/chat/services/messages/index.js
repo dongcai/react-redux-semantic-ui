@@ -2,10 +2,10 @@ import feathersNedb from 'feathers-nedb';
 import NeDB from 'nedb';
 import hooks from './hooks';
 
-export default function messagesService() {
+export default function messagesService(options) {
   const app = this;
 
-  app.use('/messages', feathersNedb({
+  app.use(options.messagesEndpoint, feathersNedb({
     Model: new NeDB({
       filename: `${__dirname}/messages.nedb`,
       autoload: true

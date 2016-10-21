@@ -1,7 +1,8 @@
 import hooks from 'feathers-hooks';
 import { hooks as auth } from 'feathers-authentication';
-import { validateHook } from '../../hooks';
-import { required, email, match, unique } from '../../utils/validation';
+import { validateHook, restrictToOwner } from 'hooks';
+import { required, email, match, unique } from 'utils/validation';
+import errors from 'feathers-errors';
 
 const schemaValidator = {
   email: [required, email, unique('email')],
@@ -11,9 +12,8 @@ const schemaValidator = {
 
 function validate() {
   return function (hook) { // eslint-disable-line func-names
-    if (hook.data.facebook) {
-      hook.data.email = hook.data.facebook.email;
-      return hook;
+    if (hook.data.facebook && !hook.data.email) {
+      throw new errors.BadRequest('Incomplete oauth registration', hook.data);
     }
     return validateHook(schemaValidator).bind(this)(hook);
   };
@@ -23,15 +23,11 @@ const userHooks = {
   before: {
     all: [],
     find: [
-      auth.verifyToken(),
-      auth.populateUser(),
-      auth.restrictToAuthenticated()
+      auth.isAuthenticated()
     ],
     get: [
-      auth.verifyToken(),
-      auth.populateUser(),
-      auth.restrictToAuthenticated(),
-      auth.restrictToOwner({ ownerField: 'id' })
+      auth.isAuthenticated(),
+      restrictToOwner({ ownerField: 'id' })
     ],
     create: [
       validate(),
@@ -39,22 +35,16 @@ const userHooks = {
       auth.hashPassword()
     ],
     update: [
-      auth.verifyToken(),
-      auth.populateUser(),
-      auth.restrictToAuthenticated(),
-      auth.restrictToOwner({ ownerField: 'id' })
+      auth.isAuthenticated(),
+      restrictToOwner({ ownerField: 'id' })
     ],
     patch: [
-      auth.verifyToken(),
-      auth.populateUser(),
-      auth.restrictToAuthenticated(),
-      auth.restrictToOwner({ ownerField: 'id' })
+      auth.isAuthenticated(),
+      restrictToOwner({ ownerField: 'id' })
     ],
     remove: [
-      auth.verifyToken(),
-      auth.populateUser(),
-      auth.restrictToAuthenticated(),
-      auth.restrictToOwner({ ownerField: 'id' })
+      auth.isAuthenticated(),
+      restrictToOwner({ ownerField: 'id' })
     ]
   },
   after: {

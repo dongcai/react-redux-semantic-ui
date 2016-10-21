@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import globalConfig from '../src/config';
+import publicConfig from '../src/config';
 import config from './config';
 import hooks from 'feathers-hooks';
 import rest from 'feathers-rest';
@@ -15,24 +15,23 @@ import { mapUrl } from './utils/url.js';
 import isPromise from 'is-promise';
 import PrettyError from 'pretty-error';
 import authentication, { middleware as authMiddleware } from 'feathers-authentication';
+import plugins from '../plugins/back';
 import authService, { socketAuth } from './services/authentication';
 
 const pretty = new PrettyError();
 const app = feathers();
 
-app.set('config', config);
-
-app.use(morgan('dev'));
-
-app.use(cookieParser());
-app.use(session({
-  secret: 'react and redux rule!!!!',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 60000 }
-}));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.set('config', config)
+  .use(morgan('dev'))
+  .use(cookieParser())
+  .use(session({
+    secret: 'react and redux rule!!!!',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60000 }
+  }))
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(bodyParser.json());
 
 const actionsHandler = (req, res, next) => {
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
@@ -109,16 +108,17 @@ app.configure(hooks())
   .configure(socketio({ path: '/ws' }, socketHandler))
   .configure(authService)
   .use(actionsHandler)
+  .configure(plugins.call(app/* , options */))
   .configure(services)
   .configure(middleware);
 
-if (globalConfig.apiPort) {
-  app.listen(globalConfig.apiPort, (err) => {
+if (publicConfig.apiPort) {
+  app.listen(publicConfig.apiPort, err => {
     if (err) {
       console.error(err);
     }
-    console.info('----\n==> 🌎  API is running on port %s', globalConfig.apiPort);
-    console.info('==> 💻  Send requests to http://%s:%s', globalConfig.apiHost, globalConfig.apiPort);
+    console.info('----\n==> 🌎  API is running on port %s', publicConfig.apiPort);
+    console.info('==> 💻  Send requests to http://%s:%s', publicConfig.apiHost, publicConfig.apiPort);
   });
 } else {
   console.error('==>     ERROR: No APIPORT environment variable has been specified');

@@ -1,7 +1,7 @@
 import hooks from 'feathers-hooks';
 import { hooks as auth } from 'feathers-authentication';
-import { validateHook as validate } from '../../hooks';
-import { required } from '../../utils/validation';
+import { validateHook as validate } from 'hooks';
+import { required } from 'utils/validation';
 
 const schemaValidator = {
   text: [required]
@@ -15,9 +15,7 @@ const options = {
 const messagesHooks = {
   before: {
     all: [
-      auth.verifyToken(),
-      auth.populateUser(),
-      auth.restrictToAuthenticated()
+      auth.isAuthenticated()
     ],
     find: [],
     get: [],

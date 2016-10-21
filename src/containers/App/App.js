@@ -57,7 +57,7 @@ export default class App extends Component {
     }
   }
 
-  handleLogout = (event) => {
+  handleLogout = event => {
     event.preventDefault();
     this.props.logout();
   };
@@ -65,7 +65,7 @@ export default class App extends Component {
   sortBy = fn => (a, b) => (fn(a) < fn(b) && -1) || (fn(a) > fn(b) && 1) || 0;
 
   render() {
-    const { user, notifs, route: { navbarItems } } = this.props;
+    const { user, notifs, children, route: { navbarItems } } = this.props;
     const styles = require('./App.scss');
 
     return (
@@ -92,7 +92,7 @@ export default class App extends Component {
                 </NavItem>
               </LinkContainer>}
             </Nav>
-            {user && <p className={`${styles.loggedInMessage} navbar-text`}>
+            {user && <p className="navbar-text">
               Logged in as <strong>{user.email}</strong>.
             </p>}
             <Nav navbar pullRight>
@@ -114,7 +114,7 @@ export default class App extends Component {
             />
           </div>}
 
-          {this.props.children}
+          {children}
         </div>
         <InfoBar />
 

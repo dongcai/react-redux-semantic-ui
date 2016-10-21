@@ -45,8 +45,8 @@ export default class Widgets extends Component {
   };
 
   render() {
-    const handleEdit = (widget) => {
-      const { editStart } = this.props; // eslint-disable-line no-shadow
+    const handleEdit = widget => {
+      const { editStart } = this.props;
       return () => editStart(String(widget.id));
     };
     const { widgets, error, editing, loading, load } = this.props;
@@ -86,7 +86,8 @@ export default class Widgets extends Component {
           </thead>
           <tbody>
             {
-              widgets.map((widget) => (editing[widget.id] ?
+              /* eslint-disable react/jsx-indent */
+              widgets.map(widget => (editing[widget.id] ?
                 <WidgetForm form={String(widget.id)} key={String(widget.id)} initialValues={widget} /> :
                 <tr key={widget.id}>
                   <td className={styles.idCol}>{widget.id}</td>
@@ -100,6 +101,7 @@ export default class Widgets extends Component {
                   </td>
                 </tr>)
               )
+              /* eslint-enable react/jsx-indent */
             }
           </tbody>
         </table>}

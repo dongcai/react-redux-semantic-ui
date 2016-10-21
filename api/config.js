@@ -3,7 +3,6 @@ import FacebookTokenStrategy from 'passport-facebook-token';
 const ONE_DAY = 60 * 60 * 24 * 1000;
 
 module.exports = {
-  secret: 's*cr*tK*y',
   auth: {
     setupMiddleware: false,
     user: {
@@ -15,22 +14,24 @@ module.exports = {
     token: {
       secret: 'super secret'
     },
-    cookies: {
-      enable: true,
-      'feathers-session': { // set to false to disable this cookie
-        httpOnly: false,
-        maxAge: ONE_DAY,
-        secure: process.env.NODE_ENV === 'production'
-      }
+    cookie: {
+      enabled: true,
+      name: 'feathers-session',
+      httpOnly: false,
+      maxAge: ONE_DAY,
+      secure: process.env.NODE_ENV === 'production'
     },
     facebook: {
-      idField: '_id',
+      user: {
+        idField: '_id',
+      },
       provider: 'facebook',
-      endpoint: '/auth/facebook',
+      service: '/auth/facebook',
       strategy: FacebookStrategy,
       tokenStrategy: FacebookTokenStrategy,
-      clientID: '619121718248110',
-      clientSecret: '765220c3e424174af8fb691a37c0b8f4',
+      successHandler: () => (req, res) => res.json(res.data),
+      clientID: '635147529978862',
+      clientSecret: '28c16a4effa4a5f1371924e4dd12c8cd',
       permissions: {
         authType: 'rerequest',
         scope: ['public_profile', 'email']

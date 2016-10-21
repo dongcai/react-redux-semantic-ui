@@ -81,8 +81,7 @@ app.use((req, res) => {
   }
 
   if (__DISABLE_SSR__) {
-    hydrateOnClient();
-    return;
+    return hydrateOnClient();
   }
 
   match({
@@ -123,7 +122,7 @@ app.use((req, res) => {
 });
 
 if (config.port) {
-  server.listen(config.port, (err) => {
+  server.listen(config.port, err => {
     if (err) {
       console.error(err);
     }

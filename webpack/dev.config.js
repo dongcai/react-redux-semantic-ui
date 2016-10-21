@@ -89,6 +89,7 @@ var webpackConfig = module.exports = {
   resolve: {
     modulesDirectories: [
       'src',
+      'modules',
       'node_modules'
     ],
     extensions: ['', '.json', '.js', '.jsx']

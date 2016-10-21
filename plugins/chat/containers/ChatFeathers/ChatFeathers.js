@@ -1,27 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import app from 'app';
-import { addMessage } from 'redux/modules/chat';
 import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
 import NavItem from 'react-bootstrap/lib/NavItem';
+import * as chatActions from 'redux/modules/chat';
 
 @connect(
   state => ({
     user: state.auth.user,
     messages: state.chat.messages
   }),
-  { addMessage }
+  { ...chatActions }
 )
 export default class ChatFeathers extends Component {
-  /* static navbarItem = {
-    pos: 1,
-    item: ({ user }) => (
-      user && <LinkContainer to="/chatFeathers">
-        <NavItem>Chat with Feathers</NavItem>
-      </LinkContainer>
-    )
-  }; */
-
   // An example of react router hook connected to redux
   static navbarItem = {
     pos: 1,
@@ -40,6 +31,7 @@ export default class ChatFeathers extends Component {
   static propTypes = {
     user: PropTypes.object,
     addMessage: PropTypes.func,
+    clean: PropTypes.func,
     messages: PropTypes.array
   };
 
@@ -50,15 +42,19 @@ export default class ChatFeathers extends Component {
 
   componentDidMount() {
     const messageService = app.service('messages');
+    const { addMessage, clean } = this.props;
     // Find the last 25 messages
     messageService.find({
       query: {
         $sort: { createdAt: -1 },
         $limit: 25
       }
-    }).then(page => this.props.addMessage(page.data.reverse()));
+    }).then(page => {
+      clean();
+      addMessage(page.data.reverse());
+    });
     // Listen to newly created messages
-    messageService.on('created', this.props.addMessage);
+    messageService.on('created', addMessage);
   }
 
   componentWillUnmount() {
@@ -84,7 +80,7 @@ export default class ChatFeathers extends Component {
           <ul>
             {messages.map(msg => <li key={`chat.msg.${msg._id}`}>{msg.sentBy.email}: {msg.text}</li>)}
           </ul>
-          <form className="login-form" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <input
               type="text" ref={c => { this.message = c; }} placeholder="Enter your message" value={this.state.message}
               onChange={event => this.setState({ message: event.target.value })}
