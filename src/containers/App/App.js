@@ -62,11 +62,21 @@ export default class App extends Component {
     this.props.logout();
   };
 
-  sortBy = fn => (a, b) => (fn(a) < fn(b) && -1) || (fn(a) > fn(b) && 1) || 0;
+  sortBy = (items, fn) => items.sort((a, b) => (fn(a) < fn(b) && -1) || (fn(a) > fn(b) && 1) || 0);
 
   render() {
-    const { user, notifs, children, route: { navbarItems } } = this.props;
+    const { user, notifs, children, route } = this.props;
+    const navbarItems = [...route.navbarItems];
     const styles = require('./App.scss');
+
+    if (user) {
+      navbarItems.push({
+        pos: 1,
+        item: () => <LinkContainer to="/chatFeathers">
+          <NavItem>Chat feathers</NavItem>
+        </LinkContainer>
+      });
+    }
 
     return (
       <div className={styles.app}>
@@ -84,7 +94,7 @@ export default class App extends Component {
 
           <Navbar.Collapse eventKey={0}>
             <Nav navbar>
-              {navbarItems.sort(this.sortBy(v => v.pos)).map(({ item: Item }, i) => <Item key={i} user={user} />)}
+              {this.sortBy(navbarItems, v => v.pos).map(({ item: Item }, i) => <Item key={i} user={user} />)}
 
               {user && <LinkContainer to="/logout">
                 <NavItem eventKey={7} className="logout-link" onClick={this.handleLogout}>

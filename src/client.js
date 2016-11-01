@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import createStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, browserHistory, match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { ReduxAsyncConnect } from 'redux-connect';
 import { AppContainer as HotEnabler } from 'react-hot-loader';
@@ -52,16 +52,18 @@ Promise.all([window.__data ? true : checkNet(), getStoredState(offlinePersistCon
 
     const renderRouter = props => <ReduxAsyncConnect {...props} helpers={{ client }} filter={item => !item.deferred} />;
     const render = routes => {
-      ReactDOM.render(
-        <HotEnabler>
-          <Provider store={store} key="provider">
-            <Router history={history} render={renderRouter}>
-              {routes}
-            </Router>
-          </Provider>
-        </HotEnabler>,
-        dest
-      );
+      match({ history, routes }, () => {
+        ReactDOM.render(
+          <HotEnabler>
+            <Provider store={store} key="provider">
+              <Router history={history} render={renderRouter}>
+                {routes}
+              </Router>
+            </Provider>
+          </HotEnabler>,
+          dest
+        );
+      });
     };
 
     render(getRoutes(store));

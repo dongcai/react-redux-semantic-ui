@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import app from 'app';
-import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
-import NavItem from 'react-bootstrap/lib/NavItem';
+// import LinkContainer from 'react-router-bootstrap/lib/LinkContainer';
+// import NavItem from 'react-bootstrap/lib/NavItem';
 import * as chatActions from 'redux/modules/chat';
 
 @connect(
@@ -14,7 +14,7 @@ import * as chatActions from 'redux/modules/chat';
 )
 export default class ChatFeathers extends Component {
   // An example of react router hook connected to redux
-  static navbarItem = {
+  /* static navbarItem = { // not possible with code splitting
     pos: 1,
     item: connect(
       state => ({
@@ -26,7 +26,7 @@ export default class ChatFeathers extends Component {
         </LinkContainer>
       )
     )
-  };
+  }; */
 
   static propTypes = {
     user: PropTypes.object,
