@@ -2,7 +2,7 @@ var Express = require('express');
 var webpack = require('webpack');
 
 var config = require('../src/config');
-var webpackConfig = require('./dev.config');
+var webpackConfig = require('./dev.client');
 var compiler = webpack(webpackConfig);
 
 var host = config.host || 'localhost';

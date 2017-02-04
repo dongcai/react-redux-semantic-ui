@@ -132,7 +132,7 @@ var webpackConfig = module.exports = {
       __DEVELOPMENT__: true,
       __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
     }),
-    webpackIsomorphicToolsPlugin.development(),
+    // webpackIsomorphicToolsPlugin.development(),
 
     new webpack.LoaderOptionsPlugin({
       test: /\.jsx?$/,

@@ -27,10 +27,11 @@
     "start": "concurrently --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
     "start-prod": "better-npm-run start-prod",
     "start-prod-api": "better-npm-run start-prod-api",
-    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\" \"npm run start-dev-api\"",
+    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run watch-server\" \"npm run start-dev\" \"npm run start-dev-api\"",
     "start-dev": "better-npm-run start-dev",
     "start-dev-api": "better-npm-run start-dev-api",
     "watch-client": "better-npm-run watch-client",
+    "watch-server": "better-npm-run watch-server",
     "build": "better-npm-run build",
     "build-dlls": "webpack --colors --display-error-details --config webpack/vendor.config.js",
     "postinstall": "concurrently \"npm run build\" \"npm run build-dlls\"",
@@ -62,7 +63,7 @@
       }
     },
     "start-dev": {
-      "command": "node ./bin/server.js",
+      "command": "nodemon ./bin/server.js --watch ./bin/server.build.js",
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
@@ -81,6 +82,17 @@
     },
     "watch-client": {
       "command": "node webpack/webpack-dev-server.js",
+      "env": {
+        "UV_THREADPOOL_SIZE": 100,
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "PORT": 3000,
+        "APIPORT": 3030,
+        "WEBPACK_DLLS": 1
+      }
+    },
+    "watch-server": {
+      "command": "webpack --config ./webpack/dev.server.js --colors --display-error-details --watch",
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
@@ -157,7 +169,9 @@
     "serve-favicon": "^2.3.2",
     "socket.io": "^1.7.2",
     "socket.io-client": "^1.7.2",
-    "superagent": "^3.4.1"
+    "source-map-support": "^0.4.11",
+    "superagent": "^3.4.1",
+    "universal-webpack": "^0.3.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -197,6 +211,7 @@
     "lighthouse": "^1.4.1",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0",
     "phantomjs-polyfill": "^0.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "piping": "^1.0.0-rc.4",

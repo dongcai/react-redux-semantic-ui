@@ -12,4 +12,8 @@ try {
   console.error(err);
 }
 
+config.ignore = /(bin|node_modules)/;
+
+// TODO ignore build (https://github.com/halt-hammerzeit/universal-webpack#sourcestart-serverbabeljs)
+
 require('babel-register')(config);
