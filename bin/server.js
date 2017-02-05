@@ -3,7 +3,7 @@ require('source-map-support/register');
 
 var server = require('universal-webpack').server;
 var settings = require('../webpack/universal-settings.json');
-var configuration = require('../webpack/dev.config'); // TODO or server
+var configuration = require('../webpack/dev.config'); // TODO or prod
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 // TODO define constants correctly in webpack/dev.config & webpack/prod.config
@@ -25,7 +25,9 @@ global.__DLLS__ = process.env.WEBPACK_DLLS === '1';
   }
 } */
 
-console.log(configuration);
+settings.exclude_from_externals = [
+  /(.less|.scss|.png)$/
+];
 
 server(configuration, settings);
 
