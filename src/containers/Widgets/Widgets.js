@@ -5,6 +5,7 @@ import { provideHooks } from 'redial';
 import { connect } from 'react-redux';
 import reducer, * as widgetActions from 'redux/modules/widgets';
 import WidgetForm from 'components/WidgetForm/WidgetForm';
+import { Table, Label, Button } from 'semantic-ui-react';
 
 const { isLoaded, load: loadWidgets } = widgetActions;
 
@@ -55,9 +56,9 @@ export default class Widgets extends Component {
       <div className={`${styles.widgets} container`}>
         <h1>
           Widgets
-          <button className={`${styles.refreshBtn} btn btn-success`} onClick={load}>
-            <i className={`fa fa-refresh ${loading ? ' fa-spin' : ''}`} /> Reload Widgets
-          </button>
+          <Button positive loading={loading} onClick={load} floated="right">
+            Reload Widgets
+          </Button>
         </h1>
         <Helmet title="Widgets" />
         <p>
@@ -75,35 +76,37 @@ export default class Widgets extends Component {
         )}
         {widgets &&
           widgets.length && (
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th className={styles.idCol}>ID</th>
-                  <th className={styles.colorCol}>Color</th>
-                  <th className={styles.sprocketsCol}>Sprockets</th>
-                  <th className={styles.ownerCol}>Owner</th>
-                  <th className={styles.buttonCol} />
-                </tr>
-              </thead>
-              <tbody>
+            <Table celled>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>ID</Table.HeaderCell>
+                  <Table.HeaderCell>Color</Table.HeaderCell>
+                  <Table.HeaderCell>Sprockets</Table.HeaderCell>
+                  <Table.HeaderCell>Owner</Table.HeaderCell>
+                  <Table.HeaderCell />
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
                 {widgets.map(widget =>
                   editing[widget.id] ? (
                     <WidgetForm form={String(widget.id)} key={String(widget.id)} initialValues={widget} />
                   ) : (
-                    <tr key={widget.id}>
-                      <td className={styles.idCol}>{widget.id}</td>
-                      <td className={styles.colorCol}>{widget.color}</td>
-                      <td className={styles.sprocketsCol}>{widget.sprocketCount}</td>
-                      <td className={styles.ownerCol}>{widget.owner}</td>
-                      <td className={styles.buttonCol}>
-                        <button className="btn btn-primary" onClick={handleEdit(widget)}>
-                          <i className="fa fa-pencil" /> Edit
-                        </button>
-                      </td>
-                    </tr>
+                    <Table.Row>
+                      <Table.Cell>
+                        <Label ribbon>{widget.id}</Label>
+                      </Table.Cell>
+                      <Table.Cell>{widget.color}</Table.Cell>
+                      <Table.Cell>{widget.sprocketCount}</Table.Cell>
+                      <Table.Cell>{widget.owner}</Table.Cell>
+                      <Table.Cell>
+                        <Button primary icon="edit" onClick={handleEdit(widget)}>
+                            Edit
+                        </Button>
+                      </Table.Cell>
+                    </Table.Row>
                   ))}
-              </tbody>
-            </table>
+              </Table.Body>
+            </Table>
           )}
       </div>
     );

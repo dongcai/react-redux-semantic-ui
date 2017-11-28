@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { provideHooks } from 'redial';
 import MiniInfoBar from 'components/MiniInfoBar/MiniInfoBar';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
+import { Button } from 'semantic-ui-react';
 
 @provideHooks({
   fetch: ({ store: { dispatch, getState } }) =>
@@ -24,7 +25,13 @@ export default class About extends Component {
         <Helmet title="About Us" />
 
         <p>
-          This project is maintained by Kévin Berthommier (
+          This project is maintained by Dong Cai (<a
+            href="https://github.com/dongcai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @dongcai
+          </a>), Kévin Berthommier (
           <a href="https://github.com/bertho-zero" target="_blank" rel="noopener noreferrer">
             @bertho-zero
           </a>) and was originally created by Erik Rasmussen (
@@ -56,13 +63,13 @@ export default class About extends Component {
 
         <p>
           Psst! Would you like to see a kitten?
-          <button
-            className={`btn btn-${showKitten ? 'danger' : 'success'}`}
+          <Button
+            color={showKitten ? 'negative' : 'positive'}
             style={{ marginLeft: 50 }}
             onClick={this.handleToggleKitten}
           >
             {showKitten ? 'No! Take it away!' : 'Yes! Please!'}
-          </button>
+          </Button>
         </p>
 
         {showKitten && (

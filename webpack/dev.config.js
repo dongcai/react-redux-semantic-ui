@@ -52,7 +52,6 @@ var webpackConfig = module.exports = {
     'main': [
       'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
       'react-hot-loader/patch',
-      'bootstrap-loader',
       './src/client.js'
     ]
   },
@@ -179,10 +178,11 @@ var webpackConfig = module.exports = {
       }, {
         loader: 'css-loader',
         options: {
-          modules: true,
+          modules: false,
           importLoaders: 2,
           sourceMap: true,
-          localIdentName: '[local]___[hash:base64:5]'
+          minimize: true
+          // localIdentName: '[local]___[hash:base64:5]'
         }
       }, {
         loader: 'postcss-loader',

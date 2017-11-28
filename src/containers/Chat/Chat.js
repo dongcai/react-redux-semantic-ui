@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { socket } from 'app';
 
+import { Button, Input } from 'semantic-ui-react';
+
 @connect(state => ({ user: state.auth.user }))
 export default class Chat extends Component {
   static propTypes = {
@@ -42,6 +44,7 @@ export default class Chat extends Component {
 
     const { user } = this.props;
     const msg = this.state.message;
+    if (!msg.trim()) return false;
 
     this.setState({ message: '' });
 
@@ -67,7 +70,7 @@ export default class Chat extends Component {
             ))}
           </ul>
           <form onSubmit={this.handleSubmit}>
-            <input
+            <Input
               type="text"
               ref={c => {
                 this.message = c;
@@ -77,10 +80,10 @@ export default class Chat extends Component {
               onChange={event => {
                 this.setState({ message: event.target.value });
               }}
-            />
-            <button className="btn" onClick={this.handleSubmit}>
+            />{' '}
+            <Button primary onClick={this.handleSubmit}>
               Send
-            </button>
+            </Button>
           </form>
         </div>
       </div>

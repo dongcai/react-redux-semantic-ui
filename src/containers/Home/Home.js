@@ -5,6 +5,7 @@ import { CounterButton, GithubButton } from 'components';
 import config from 'config';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { Container, Header, Segment } from 'semantic-ui-react';
 
 @connect(state => ({
   online: state.online
@@ -22,21 +23,19 @@ export default class Home extends Component {
     return (
       <div className={styles.home}>
         <Helmet title="Home" />
-        <div className={styles.masthead}>
-          <div className="container">
+        <Segment textAlign="center" vertical>
+          <Container text>
             <div className={styles.logo}>
-              <p>
-                <img src={logoImage} alt="presentation" />
-              </p>
+              <img src={logoImage} alt="presentation" />
+              <img src="https://react.semantic-ui.com/logo.png" alt="semantic-ui-react" />
             </div>
-            <h1>{config.app.title}</h1>
-
-            <h2>{config.app.description}</h2>
+            <Header as="h1" content={config.app.title} />
+            <Header as="h2" content={config.app.description} />
 
             <p>
               <a
                 className={styles.github}
-                href="https://github.com/bertho-zero/react-redux-universal-hot-example"
+                href="https://github.com/bertho-zero/react-redux-semantic-universal-hot-example"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -45,8 +44,8 @@ export default class Home extends Component {
             </p>
             {online && (
               <GithubButton
-                user="bertho-zero"
-                repo="react-redux-universal-hot-example"
+                user="dongcai"
+                repo="react-redux-semantic-universal-hot-example"
                 type="star"
                 width={160}
                 height={30}
@@ -56,8 +55,8 @@ export default class Home extends Component {
             )}
             {online && (
               <GithubButton
-                user="bertho-zero"
-                repo="react-redux-universal-hot-example"
+                user="dongcai"
+                repo="react-redux-semantic-universal-hot-example"
                 type="fork"
                 width={160}
                 height={30}
@@ -74,16 +73,20 @@ export default class Home extends Component {
               and maintained by{' '}
               <a href="https://github.com/bertho-zero" target="_blank" rel="noopener noreferrer">
                 @bertho-zero
+              </a>
+              {', '}
+              <a href="https://github.com/dongcai" target="_blank" rel="noopener noreferrer">
+                @dongcai
               </a>.
             </p>
-          </div>
-        </div>
+          </Container>
+        </Segment>
 
-        <div className="container">
+        <Container>
           <div className={styles.counterContainer}>
-            <CounterButton multireducerKey="counter1" />
-            <CounterButton multireducerKey="counter2" />
-            <CounterButton multireducerKey="counter3" />
+            <CounterButton multireducerKey="counter1" color="red" />
+            <CounterButton multireducerKey="counter2" color="green" />
+            <CounterButton multireducerKey="counter3" color="blue" />
           </div>
 
           <p>This starter boilerplate app uses the following technologies:</p>
@@ -193,10 +196,9 @@ export default class Home extends Component {
               to allow import of stylesheets
             </li>
             <li>
-              <a href="https://github.com/shakacode/bootstrap-sass-loader" target="_blank" rel="noopener noreferrer">
-                bootstrap-sass-loader
-              </a>{' '}
-              to customize Bootstrap
+              <a href="https://github.com/Semantic-Org/Semantic-UI-React" target="_blank" rel="noopener noreferrer">
+                Semantic-UI-React
+              </a>
             </li>
             <li>
               <a href="https://github.com/FortAwesome/Font-Awesome" target="_blank" rel="noopener noreferrer">
@@ -278,7 +280,7 @@ export default class Home extends Component {
           <p>Thanks for taking the time to check this out.</p>
 
           <p>– Erik Rasmussen</p>
-        </div>
+        </Container>
       </div>
     );
   }

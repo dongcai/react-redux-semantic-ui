@@ -75,13 +75,13 @@ export default class WidgetForm extends Component {
           <Field name="id" type="hidden" component="input" />
         </td>
         <td className={styles.colorCol}>
-          <Field name="color" className="form-control" component={Select} options={colors} />
+          <Field name="color" className="ui input" component={Select} options={colors} />
         </td>
         <td className={styles.sprocketsCol}>
-          <Field name="sprocketCount" className="form-control" component={Input} />
+          <Field name="sprocketCount" className="ui input" component={Input} />
         </td>
         <td className={styles.ownerCol}>
-          <Field name="owner" className="form-control" component={Input} />
+          <Field name="owner" className="ui input" component={Input} />
         </td>
         <td className={styles.buttonCol}>
           <button className="btn btn-default" onClick={() => editStop(form)} disabled={submitting}>

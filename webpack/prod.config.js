@@ -22,7 +22,6 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     main: [
-      'bootstrap-loader',
       './src/client.js'
     ]
   },
@@ -41,7 +40,8 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      }, {
+      },
+      {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -49,9 +49,10 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
-                modules: true,
+                modules: false,
                 importLoaders: 2,
-                sourceMap: true
+                sourceMap: true,
+                minimize: true
               }
             }, {
               loader: 'postcss-loader',
@@ -60,15 +61,16 @@ module.exports = {
               }
             }, {
               loader: 'less-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true
-              }
+              // options: {
+              //   outputStyle: 'expanded',
+              //   sourceMap: true,
+              //   sourceMapContents: true
+              // }
             }
           ]
         })
-      }, {
+      },
+      {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
