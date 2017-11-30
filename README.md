@@ -1,5 +1,5 @@
 
-# React Redux Universal Hot Example
+# React Redux Universal Hot Example With Semantic UI
 
 [![Build Status](https://travis-ci.org/bertho-zero/react-redux-universal-hot-example.svg?branch=master&style=flat-square)](https://travis-ci.org/bertho-zero/react-redux-universal-hot-example)
 [![Dependency Status](https://david-dm.org/bertho-zero/react-redux-universal-hot-example.svg?style=flat-square)](https://david-dm.org/bertho-zero/react-redux-universal-hot-example)
@@ -30,7 +30,7 @@ This is a starter boilerplate app I've put together using the following technolo
 * [lru-memoize](https://github.com/erikras/lru-memoize) to speed up form validation
 * [multireducer](https://github.com/erikras/multireducer) to combine single reducers into one key-based reducer
 * [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
-* [bootstrap-loader](https://github.com/shakacode/bootstrap-loader) to customize Bootstrap
+* [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React) 
 * [font-awesome](https://github.com/FortAwesome/Font-Awesome)
 * [react-helmet](https://github.com/nfl/react-helmet) to manage title and meta tag information on both server and client
 * [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) to allow require() work for statics both on client and server
@@ -115,7 +115,7 @@ npm run start
 
 ## Demo
 
-A demonstration of this app can be seen [running on heroku](https://react-hot-example.herokuapp.com/), which is a deployment of the [heroku branch](https://github.com/bertho-zero/react-redux-universal-hot-example/tree/heroku).
+A demonstration of this app can be seen [here](http://react-redux-semantic-ui.shopecific.com/), 
 
 ## Explanation
 
@@ -282,3 +282,4 @@ Created by:
 
 Maintened by:
 – Kévin Berthommier, [@bertho-zero](https://github.com/bertho-zero)
+- Dong Cai, [@dongcai](https://github.com/dongcai)
