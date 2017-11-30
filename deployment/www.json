@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "react_server",
+      "script": "./bin/server.js",
+      "instances": "max",
+      "exec_mode": "cluster_mode",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "PORT": 8080,
+        "APIPORT": 3030,
+        "DOMAIN": "shopecific.com"
+      }
+    },
+    {
+      "name": "api_server",
+      "script": "./bin/api.js",
+      "instances": "max",
+      "exec_mode": "cluster_mode",
+      "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "production",
+        "APIPORT": 3030
+      }
+    }
+  ]
+}

@@ -257,6 +257,10 @@ To get this project to work on Heroku, you need to:
 
 The first deploy might take a while, but after that your `node_modules` dir should be cached.
 
+## Deployment on your server with PM2 (optional)
+1. Install PM2 `npm install pm2@latest -g`
+2. Run `sh deploylment/deploy.sh`
+
 ## FAQ
 
 This project moves fast and has an active community, so if you have a question that is not answered below please file an issue.
