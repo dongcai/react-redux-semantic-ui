@@ -35,7 +35,7 @@ export default class Home extends Component {
             <p>
               <a
                 className={styles.github}
-                href="https://github.com/bertho-zero/react-redux-semantic-universal-hot-example"
+                href="https://github.com/dongcai/react-redux-universal-hot-example"
                 target="_blank"
                 rel="noopener noreferrer"
               >
