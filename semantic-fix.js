@@ -1,3 +1,5 @@
+// Reference: https://www.artembutusov.com/webpack-semantic-ui/
+
 var fs = require('fs');
 
 // relocate default config

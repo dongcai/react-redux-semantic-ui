@@ -10,7 +10,6 @@
         "NODE_ENV": "production",
         "PORT": 8080,
         "APIPORT": 3030,
-        "DOMAIN": "shopecific.com"
       }
     },
     {
