@@ -7,6 +7,7 @@
 npm install
 npm run build
 
+# run this only when pm2 is running. Otherwise, should run pm2 start deployment/www.json
 pm2 reload deployment/www.json
 
 # after the build, clean up the dist files that are older than 2 days

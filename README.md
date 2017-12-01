@@ -259,7 +259,7 @@ The first deploy might take a while, but after that your `node_modules` dir shou
 
 ## Deployment on your server with PM2 (optional)
 1. Install PM2 `npm install pm2@latest -g`
-2. Run `sh deploylment/deploy.sh`
+2. Run `sh deploylment/deploy.sh` (please check deploy.sh for comments)
 
 ## FAQ
 
