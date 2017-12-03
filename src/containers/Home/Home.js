@@ -35,7 +35,7 @@ export default class Home extends Component {
             <p>
               <a
                 className={styles.github}
-                href="https://github.com/dongcai/react-redux-universal-hot-example"
+                href="https://github.com/dongcai/react-redux-semantic-ui"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -45,7 +45,7 @@ export default class Home extends Component {
             {online && (
               <GithubButton
                 user="dongcai"
-                repo="react-redux-semantic-universal-hot-example"
+                repo="react-redux-semantic-ui"
                 type="star"
                 width={160}
                 height={30}
@@ -56,7 +56,7 @@ export default class Home extends Component {
             {online && (
               <GithubButton
                 user="dongcai"
-                repo="react-redux-semantic-universal-hot-example"
+                repo="react-redux-semantic-ui"
                 type="fork"
                 width={160}
                 height={30}
