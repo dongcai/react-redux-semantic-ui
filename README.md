@@ -6,6 +6,8 @@
 [![devDependency Status](https://david-dm.org/bertho-zero/react-redux-universal-hot-example/dev-status.svg?style=flat-square)](https://david-dm.org/bertho-zero/react-redux-universal-hot-example?type=dev)
 
 ---
+## Demo
+[React Redux Semantic UI](https://react-redux-semantic-ui.shopecific.com/)
 
 ## About
 
