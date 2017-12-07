@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
-import { Container, Icon, Image, Menu, Sidebar, Responsive } from 'semantic-ui-react';
+import { Icon, Image, Menu, Sidebar, Responsive } from 'semantic-ui-react';
 
 const NavBarMobile = props => (
   <Sidebar.Pushable>
-    <Sidebar as={Menu} animation="push" inverted visible={props.visible} width="tiny" style={{ height: '100vh' }}>
+    <Sidebar as={Menu} animation="overlay" inverted visible={props.visible} width="wide" style={{ height: '100vh' }}>
+      <Icon className={props.styles.closeIt} name="close" size="large" onClick={props.onToggle} />
       <Menu vertical inverted fluid>
         <Menu.Item>
           <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
@@ -20,16 +21,14 @@ const NavBarMobile = props => (
         ))}
       </Menu>
     </Sidebar>
-    <Sidebar.Pusher dimmed={props.visible} onClick={props.onPusherClick} style={{ minHeight: '100vh' }}>
+    <Sidebar.Pusher dimmed={props.visible} onClick={props.onPusherClick}>
       <Menu fixed="top" inverted>
         <Menu.Item onClick={props.onToggle}>
           <Icon name="sidebar" />
         </Menu.Item>
-        {!props.visible && (
-          <Menu.Item>
-            <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
-          </Menu.Item>
-        )}
+        <Menu.Item>
+          <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
+        </Menu.Item>
         <Menu.Menu position="right">
           {_.map(props.rightItems, item => (
             <Menu.Item as={Link} to={item.to} key={item.key}>
@@ -49,13 +48,15 @@ NavBarMobile.propTypes = {
   onPusherClick: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
   rightItems: PropTypes.arrayOf(PropTypes.object),
-  visible: PropTypes.bool
+  visible: PropTypes.bool,
+  styles: PropTypes.objectOf(PropTypes.any)
 };
 
 NavBarMobile.defaultProps = {
   leftItems: [],
   rightItems: [],
-  visible: false
+  visible: false,
+  styles: {}
 };
 
 const NavBarDesktop = ({ leftItems, rightItems }) => (
@@ -88,7 +89,7 @@ NavBarDesktop.defaultProps = {
   rightItems: []
 };
 
-const NavBarChildren = ({ children }) => <Container style={{ marginTop: '6em' }}>{children}</Container>;
+const NavBarChildren = ({ children }) => <div style={{ margin: '6em auto 2em' }}>{children}</div>;
 
 NavBarChildren.propTypes = {
   children: PropTypes.node.isRequired
@@ -116,6 +117,7 @@ export default class Navigation extends Component {
   render() {
     const { children, leftItems, rightItems } = this.props;
     const { visible } = this.state;
+    const styles = require('./Navigation.scss');
 
     return (
       <div style={{ flex: 1 }}>
@@ -126,6 +128,7 @@ export default class Navigation extends Component {
             onToggle={this.handleToggle}
             rightItems={rightItems}
             visible={visible}
+            styles={styles}
           >
             <NavBarChildren>{children}</NavBarChildren>
           </NavBarMobile>

@@ -6,7 +6,7 @@ import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
-import { Message, Segment } from 'semantic-ui-react';
+import { Container, Message, Segment } from 'semantic-ui-react';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { Notifs, InfoBar } from 'components';
@@ -151,21 +151,20 @@ export default class App extends Component {
         <Helmet {...config.app.head} />
 
         <Navigation leftItems={leftItems} rightItems={rightItems}>
-          <div className={styles.appContent}>
+          <Container>
             {notifs.global && (
-              <div className="container">
-                <Notifs
-                  className={styles.notifs}
-                  namespace="global"
-                  NotifComponent={props => <Message warning>{props.message}</Message>}
-                />
-              </div>
+              <Notifs
+                className={styles.notifs}
+                namespace="global"
+                NotifComponent={props => <Message warning>{props.message}</Message>}
+              />
             )}
             {renderRoutes(route.routes)}
             <InfoBar />
-          </div>
+          </Container>
         </Navigation>
-        <Segment textAlign="center" vertical inverted style={{ marginTop: '2em' }}>
+
+        <Segment textAlign="center" vertical inverted>
           <p>
             Have questions? Ask for help{' '}
             <a
