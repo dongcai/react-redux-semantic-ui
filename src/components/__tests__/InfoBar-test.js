@@ -51,7 +51,7 @@ describe('InfoBar', () => {
 
   it('should render the correct className', () => {
     const styles = require('components/InfoBar/InfoBar.scss');
-    const component = findRenderedDOMComponentWithClass(renderer, styles.infoBar);
+    const component = findRenderedDOMComponentWithClass(renderer, styles.wrapper);
     expect(styles.wrapper).to.be.a('string');
     expect(component.className).to.include(styles.wrapper);
   });
