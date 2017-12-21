@@ -51,6 +51,10 @@ app.use('/dist/service-worker.js', (req, res, next) => {
   return next();
 });
 
+app.get('/hello', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'static', 'hello.html'));
+});
+
 app.use('/dist/dlls/:dllName.js', (req, res, next) => {
   fs.access(
     path.join(__dirname, '..', 'static', 'dist', 'dlls', `${req.params.dllName}.js`),
