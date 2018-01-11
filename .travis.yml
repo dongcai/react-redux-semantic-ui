@@ -20,5 +20,3 @@ script:
   - npm run test
   - npm run test-node
 
-env:
-  - TRAVIS=travis CXX=g++-4.8
