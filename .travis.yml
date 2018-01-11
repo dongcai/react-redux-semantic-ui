@@ -1,19 +1,28 @@
-os: osx
+dist: trusty
 
 language: node_js
 
 node_js:
-  - "6"
-  - "8"
+  - '8'
+  - '6'
 
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+    - gcc-4.8
+    - g++-4.8
 
-sudo: false
+sudo: required
+
+before_install:
+  - sudo apt-get -qq update
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
+install:
+  - yarn
 
 before_script:
   - export DISPLAY=:99.0
@@ -21,13 +30,14 @@ before_script:
   - export NODE_ENV=development
 
 cache:
+  yarn: true
   directories:
     - node_modules
 
 script:
-  - npm run lint
-  - npm run test
-  - npm run test-node
+  - yarn lint
+  - yarn test
+  - yarn test-node
 
 env:
-  - CXX=g++-4.8
+  - TRAVIS=travis CXX=g++-4.8
