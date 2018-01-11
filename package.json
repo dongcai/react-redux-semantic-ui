@@ -112,7 +112,7 @@
       }
     },
     "test": {
-      "command": "jest src",
+      "command": "jest src --debug",
       "env": {
         "NODE_PATH": "src"
       }
