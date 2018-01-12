@@ -99,7 +99,12 @@ export default class Navigation extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     leftItems: PropTypes.arrayOf(PropTypes.any).isRequired,
-    rightItems: PropTypes.arrayOf(PropTypes.any).isRequired
+    rightItems: PropTypes.arrayOf(PropTypes.any).isRequired,
+    mobileOnly: PropTypes.bool
+  };
+
+  static defaultProps = {
+    mobileOnly: true
   };
 
   state = {
@@ -115,13 +120,15 @@ export default class Navigation extends Component {
   handleToggle = () => this.setState({ visible: !this.state.visible });
 
   render() {
-    const { children, leftItems, rightItems } = this.props;
+    const {
+      children, leftItems, rightItems, mobileOnly
+    } = this.props;
     const { visible } = this.state;
     const styles = require('./Navigation.scss');
 
     return (
       <div style={{ flex: 1 }}>
-        <Responsive {...Responsive.onlyMobile}>
+        {mobileOnly && (
           <NavBarMobile
             leftItems={leftItems}
             onPusherClick={this.handlePusher}
@@ -132,11 +139,27 @@ export default class Navigation extends Component {
           >
             <NavBarChildren>{children}</NavBarChildren>
           </NavBarMobile>
-        </Responsive>
-        <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-          <NavBarDesktop leftItems={leftItems} rightItems={rightItems} />
-          <NavBarChildren>{children}</NavBarChildren>
-        </Responsive>
+        )}
+        {!mobileOnly && (
+          <Responsive {...Responsive.onlyMobile}>
+            <NavBarMobile
+              leftItems={leftItems}
+              onPusherClick={this.handlePusher}
+              onToggle={this.handleToggle}
+              rightItems={rightItems}
+              visible={visible}
+              styles={styles}
+            >
+              <NavBarChildren>{children}</NavBarChildren>
+            </NavBarMobile>
+          </Responsive>
+        )}
+        {!mobileOnly && (
+          <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+            <NavBarDesktop leftItems={leftItems} rightItems={rightItems} />
+            <NavBarChildren>{children}</NavBarChildren>
+          </Responsive>
+        )}
       </div>
     );
   }
