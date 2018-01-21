@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 
 class FacebookLogin extends Component {
   static propTypes = {
@@ -13,14 +14,12 @@ class FacebookLogin extends Component {
     language: PropTypes.string,
     textButton: PropTypes.string,
     typeButton: PropTypes.string,
-    className: PropTypes.string,
     component: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     textButton: 'Login with Facebook',
     typeButton: 'button',
-    className: '',
     scope: 'public_profile,email',
     xfbml: false,
     cookie: false,
@@ -85,16 +84,14 @@ class FacebookLogin extends Component {
   };
 
   render() {
-    const {
-      className, textButton, typeButton, component: WrappedComponent
-    } = this.props;
+    const { textButton, typeButton, component: WrappedComponent } = this.props;
 
     if (WrappedComponent) return <WrappedComponent facebookLogin={this.click} />;
 
     return (
-      <button className={className} onClick={this.click} type={typeButton}>
+      <Button onClick={this.click} type={typeButton}>
         {textButton}
-      </button>
+      </Button>
     );
   }
 }

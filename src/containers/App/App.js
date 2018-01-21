@@ -168,7 +168,7 @@ export default class App extends Component {
           <p>
             Have questions? Ask for help{' '}
             <a
-              href="https://github.com/bertho-zero/react-redux-universal-hot-example/issues"
+              href="https://github.com/dongcai/react-redux-semantic-ui/issues"
               target="_blank"
               rel="noopener noreferrer"
             >

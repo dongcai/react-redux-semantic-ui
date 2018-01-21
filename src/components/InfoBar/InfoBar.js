@@ -24,8 +24,10 @@ export default class InfoBar extends Component {
     return (
       <div className={styles.wrapper}>
         <Message info>
-          This is an info bar <strong>{info ? info.message : 'no info!'}</strong>
-          <span className={styles.time}>{info && new Date(info.time).toString()}</span>
+          <Message.Header>
+            This is an info bar <strong>{info ? info.message : 'no info!'}</strong>
+          </Message.Header>
+          <p className={styles.time}>{info && new Date(info.time).toString()}</p>
           <Button onClick={load}>Reload from server</Button>
         </Message>
       </div>

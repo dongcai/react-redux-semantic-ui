@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { Button } from 'semantic-ui-react';
 import LoginForm from 'components/LoginForm/LoginForm';
 import FacebookLogin from 'components/FacebookLogin/FacebookLogin';
 import * as authActions from 'redux/modules/auth';
@@ -58,11 +59,7 @@ export default class Login extends Component {
     });
   };
 
-  FacebookLoginButton = ({ facebookLogin }) => (
-    <button className="btn btn-primary" onClick={facebookLogin}>
-      Login with <i className="fa fa-facebook-f" />
-    </button>
-  );
+  FacebookLoginButton = ({ facebookLogin }) => <Button onClick={facebookLogin}>Login with Facebook</Button>;
 
   render() {
     const { user, logout } = this.props;
@@ -88,9 +85,7 @@ export default class Login extends Component {
             <p>You are currently logged in as {user.email}.</p>
 
             <div>
-              <button className="btn btn-danger" onClick={logout}>
-                <i className="fa fa-sign-out" /> Log Out
-              </button>
+              <Button onClick={logout}>Log Out</Button>
             </div>
           </div>
         )}
