@@ -23,7 +23,7 @@ export default class CounterButton extends Component {
   render() {
     const { count, increment, color } = this.props;
     return (
-      <Button color={color} onClick={increment}>
+      <Button color={color} onClick={increment} style={{ marginBottom: '10px' }}>
         You have clicked me {count} time{count === 1 ? '' : 's'}.
       </Button>
     );

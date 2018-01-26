@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, fieldPropTypes } from 'redux-form';
+import { Form, Label, Input as InputComponent, Table, Button } from 'semantic-ui-react';
+import { CheckboxField } from 'react-semantic-redux-form';
 import { connect } from 'react-redux';
 import { isValidEmail } from 'redux/modules/survey';
 import surveyValidation from './surveyValidation';
@@ -15,44 +17,46 @@ const Input = ({
   label,
   type,
   showAsyncValidating,
-  className,
   styles,
+  required,
+  width,
   meta: {
     touched, error, dirty, active, visited, asyncValidating
-  }
+  },
+  ...rest
 }) => (
-  <div className={`form-group ${error && touched ? 'has-error' : ''}`}>
-    <label htmlFor={input.name} className="col-sm-2">
-      {label}
-    </label>
-    <div className={`col-sm-8 ${styles.inputGroup}`}>
-      {showAsyncValidating && asyncValidating && <i className={`fa fa-cog fa-spin ${styles.cog}`} />}
-      <input {...input} type={type} className={className} id={input.name} />
-      {error && touched && <div className="text-danger">{error}</div>}
-      <div className={styles.flags}>
-        {dirty && (
-          <span className={styles.dirty} title="Dirty">
-            D
-          </span>
-        )}
-        {active && (
-          <span className={styles.active} title="Active">
-            A
-          </span>
-        )}
-        {visited && (
-          <span className={styles.visited} title="Visited">
-            V
-          </span>
-        )}
-        {touched && (
-          <span className={styles.touched} title="Touched">
-            T
-          </span>
-        )}
-      </div>
+  <Form.Field error={!!(touched && error)} required={required} className={styles.inputGroup}>
+    {label && <label>{label}</label>}
+    {showAsyncValidating && asyncValidating && <i className={`fa fa-cog fa-spin ${styles.cog}`} />}
+    <InputComponent required={required} {...input} {...rest} />
+    <div className={styles.flags}>
+      {dirty && (
+        <span className={styles.dirty} title="Dirty">
+          D
+        </span>
+      )}
+      {active && (
+        <span className={styles.active} title="Active">
+          A
+        </span>
+      )}
+      {visited && (
+        <span className={styles.visited} title="Visited">
+          V
+        </span>
+      )}
+      {touched && (
+        <span className={styles.touched} title="Touched">
+          T
+        </span>
+      )}
     </div>
-  </div>
+    {touched && error ? (
+      <Label basic color="red" pointing>
+        {error}
+      </Label>
+    ) : null}
+  </Form.Field>
 );
 
 Input.propTypes = fieldPropTypes;
@@ -64,7 +68,7 @@ Input.propTypes = fieldPropTypes;
   asyncBlurFields: ['email']
 })
 @connect(state => ({
-  active: state.form.survey.active
+  active: state.form.survey ? state.form.survey.active : ''
 }))
 export default class SurveyForm extends Component {
   static propTypes = {
@@ -90,8 +94,8 @@ export default class SurveyForm extends Component {
 
     return (
       <div>
-        <form className="form-horizontal" onSubmit={handleSubmit}>
-          <Field name="name" type="text" component={Input} label="Full Name" className="form-control" styles={styles} />
+        <Form onSubmit={handleSubmit}>
+          <Field name="name" type="text" component={Input} label="Full Name" styles={styles} />
 
           <Field
             name="email"
@@ -112,66 +116,44 @@ export default class SurveyForm extends Component {
             styles={styles}
           />
 
-          <Field
-            name="currentlyEmployed"
-            type="checkbox"
-            component={Input}
-            label="Currently Employed?"
-            styles={styles}
-          />
+          <Field name="currentlyEmployed" component={CheckboxField} label="Currently Employed?" styles={styles} />
 
-          <div className="form-group">
-            <label htmlFor="sex" className="col-sm-2">
-              Sex
-            </label>
-            <div className="col-sm-8">
-              <label htmlFor="sex-male" className={styles.radioLabel}>
-                <Field name="sex" component="input" type="radio" id="sex-male" value="male" /> Male
-              </label>
-              <label htmlFor="sex-female" className={styles.radioLabel}>
-                <Field name="sex" component="input" type="radio" id="sex-female" value="female" /> Female
-              </label>
-            </div>
+          <div>
+            <Button positive onClick={handleSubmit}>
+              Submit
+            </Button>
+            <Button as="a" negative onClick={reset}>
+              Reset
+            </Button>
           </div>
-
-          <div className="form-group">
-            <div className="col-sm-offset-2 col-sm-10">
-              <button className="btn btn-success" onClick={handleSubmit}>
-                <i className="fa fa-paper-plane" /> Submit
-              </button>
-              <button className="btn btn-warning" type="button" onClick={reset} style={{ marginLeft: 15 }}>
-                <i className="fa fa-undo" /> Reset
-              </button>
-            </div>
-          </div>
-        </form>
+        </Form>
 
         <h4>Props from redux-form</h4>
 
-        <table className="table table-striped">
-          <tbody>
-            <tr>
-              <th>Active Field</th>
-              <td>{active}</td>
-            </tr>
-            <tr>
-              <th>Dirty</th>
-              <td className={dirty ? 'success' : 'danger'}>{dirty ? 'true' : 'false'}</td>
-            </tr>
-            <tr>
-              <th>Pristine</th>
-              <td className={pristine ? 'success' : 'danger'}>{pristine ? 'true' : 'false'}</td>
-            </tr>
-            <tr>
-              <th>Valid</th>
-              <td className={valid ? 'success' : 'danger'}>{valid ? 'true' : 'false'}</td>
-            </tr>
-            <tr>
-              <th>Invalid</th>
-              <td className={invalid ? 'success' : 'danger'}>{invalid ? 'true' : 'false'}</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table celled>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>Active Field</Table.Cell>
+              <Table.Cell>{active}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Dirty</Table.Cell>
+              <Table.Cell className={dirty ? 'positive' : 'negative'}>{dirty ? 'true' : 'false'}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Pristine</Table.Cell>
+              <Table.Cell className={pristine ? 'positive' : 'negative'}>{pristine ? 'true' : 'false'}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Valid</Table.Cell>
+              <Table.Cell className={valid ? 'positive' : 'negative'}>{valid ? 'true' : 'false'}</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Invalid</Table.Cell>
+              <Table.Cell className={invalid ? 'positive' : 'negative'}>{invalid ? 'true' : 'false'}</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { provideHooks } from 'redial';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { initialize } from 'redux-form';
+import { Button, Icon } from 'semantic-ui-react';
 import reducer from 'redux/modules/survey';
 import SurveyForm from 'components/SurveyForm/SurveyForm';
 
@@ -66,9 +67,9 @@ export default class Survey extends Component {
         </p>
 
         <div style={{ textAlign: 'center', margin: 15 }}>
-          <button className="btn btn-primary" onClick={this.handleInitialize}>
-            <i className="fa fa-pencil" /> Initialize Form
-          </button>
+          <Button primary onClick={this.handleInitialize} icon>
+            <Icon name="edit" /> Initialize Form
+          </Button>
         </div>
 
         <p>

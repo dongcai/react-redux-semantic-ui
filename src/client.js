@@ -139,5 +139,7 @@ global.socket = initSocket();
       await navigator.serviceWorker.ready;
       console.log('Service Worker Ready');
     });
+  } else {
+    console.log('I am DEV');
   }
 })();

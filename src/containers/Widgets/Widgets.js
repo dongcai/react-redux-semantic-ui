@@ -99,9 +99,7 @@ export default class Widgets extends Component {
                       <Table.Cell>{widget.sprocketCount}</Table.Cell>
                       <Table.Cell>{widget.owner}</Table.Cell>
                       <Table.Cell>
-                        <Button primary icon="edit" onClick={handleEdit(widget)}>
-                            Edit
-                        </Button>
+                        <Button onClick={handleEdit(widget)}>Edit</Button>
                       </Table.Cell>
                     </Table.Row>
                   ))}

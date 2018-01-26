@@ -1,35 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { reduxForm, Field, getFormValues, SubmissionError, fieldPropTypes } from 'redux-form';
+import { reduxForm, Field, getFormValues, SubmissionError } from 'redux-form';
+import { InputField, SelectField } from 'react-semantic-redux-form';
+import { Button, Message } from 'semantic-ui-react';
 import * as widgetActions from 'redux/modules/widgets';
 import widgetValidation, { colors } from './widgetValidation';
-
-const Input = ({ input, className, meta: { touched, error } }) => (
-  <div>
-    <input type="text" className={className} {...input} />
-    {error && touched && <div className="text-danger">{error}</div>}
-  </div>
-);
-
-Input.propTypes = fieldPropTypes;
-
-const Select = ({
-  options, input, className, meta: { touched, error }
-}) => (
-  <div>
-    <select className={className} {...input}>
-      {options.map(option => (
-        <option value={option} key={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-    {error && touched && <div className="text-danger">{error}</div>}
-  </div>
-);
-
-Select.propTypes = fieldPropTypes;
 
 @reduxForm({
   form: 'widget',
@@ -75,20 +51,19 @@ export default class WidgetForm extends Component {
           <Field name="id" type="hidden" component="input" />
         </td>
         <td className={styles.colorCol}>
-          <Field name="color" className="ui input" component={Select} options={colors} />
+          <Field name="color" component={SelectField} options={colors} />
         </td>
         <td className={styles.sprocketsCol}>
-          <Field name="sprocketCount" className="ui input" component={Input} />
+          <Field name="sprocketCount" component={InputField} />
         </td>
         <td className={styles.ownerCol}>
-          <Field name="owner" className="ui input" component={Input} />
+          <Field name="owner" component={InputField} />
         </td>
         <td className={styles.buttonCol}>
-          <button className="btn btn-default" onClick={() => editStop(form)} disabled={submitting}>
-            <i className="fa fa-ban" /> Cancel
-          </button>
-          <button
-            className="btn btn-success"
+          <Button onClick={() => editStop(form)} disabled={submitting}>
+            Cancel
+          </Button>
+          <Button
             onClick={handleSubmit(() =>
               save(values).catch(err => {
                 if (typeof err === 'object') {
@@ -98,9 +73,13 @@ export default class WidgetForm extends Component {
               }))}
             disabled={pristine || invalid || submitting}
           >
-            <i className={`fa ${submitting ? 'fa-cog fa-spin' : 'fa-cloud'}`} /> Save
-          </button>
-          {saveError && <div className="text-danger">{saveError}</div>}
+            Save
+          </Button>
+          {saveError && (
+            <Message negative>
+              <p>{saveError}</p>
+            </Message>
+          )}
         </td>
       </tr>
     );
