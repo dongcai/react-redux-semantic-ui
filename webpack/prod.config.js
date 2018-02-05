@@ -4,8 +4,10 @@
 var path = require('path');
 var webpack = require('webpack');
 var CleanPlugin = require('clean-webpack-plugin');
-var ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
+
 
 var projectRootPath = path.resolve(__dirname, '../');
 var assetsPath = path.resolve(projectRootPath, './static/dist');
@@ -180,11 +182,7 @@ module.exports = {
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
 
     // optimizations
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    new UglifyJsPlugin(),
 
     webpackIsomorphicToolsPlugin,
 
