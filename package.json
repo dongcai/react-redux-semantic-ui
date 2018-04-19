@@ -30,6 +30,9 @@
     "semantic-ui"
   ],
   "main": "bin/server.js",
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
     "start": "concurrently --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
     "start-prod": "cross-env NODE_PATH=src NODE_ENV=production PORT=8080 APIPORT=3030 node ./bin/server.js",
@@ -159,7 +162,6 @@
     "less-loader": "^4.0.3",
     "lighthouse": "^2.7.0",
     "lint-staged": "^6.0.0",
-    "mocha": "^5.0.0",
     "node-sass": "^4.7.2",
     "piping": "^1.0.0-rc.4",
     "postcss": "^6.0.9",

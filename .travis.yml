@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 
 node_js:
-  - '9'
+  - '8'
   - '6'
 
 addons:
@@ -37,9 +37,9 @@ cache:
     - node_modules
 
 script:
+  - yarn test-node
   - yarn lint
   - yarn test
-  - yarn test-node
 
 env:
   - TRAVIS=travis CXX=g++-4.8
