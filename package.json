@@ -48,7 +48,7 @@
     "prettier": "prettier-eslint --write --eslint-config-path .eslintrc './+(src|api)/**/*.js'",
     "lint": "eslint -c .eslintrc api src",
     "test": "cross-env NODE_PATH=src NODE_ENV=test jest src",
-    "test-node": "cross-env NODE_PATH=api jest api",
+    "test-node": "cross-env NODE_PATH=api jest --forceExit api",
     "lighthouse-report": "lighthouse http://localhost:8080 --view",
     "docker-build": ". ./docker/build.sh",
     "docker-dev": ". ./docker/run.dev.sh",
