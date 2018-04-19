@@ -40,9 +40,9 @@ script:
 #  - yarn lint
 #  - yarn test
 #  - yarn test-node
-  npm run lint
-  npm run test
-  npm run test-node
+  - npm run lint
+  - npm run test
+  - npm run test-node
 
 env:
   - TRAVIS=travis CXX=g++-4.8
