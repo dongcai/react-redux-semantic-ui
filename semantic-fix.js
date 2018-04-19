@@ -1,3 +1,6 @@
+// Since 04/18/2018 - This file is for reference only.
+// No need to run it, but use "resolve/alias" in webpack config files both dev/prod.config.js
+//
 // Reference: https://www.artembutusov.com/webpack-semantic-ui/
 
 var fs = require('fs');

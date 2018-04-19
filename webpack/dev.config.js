@@ -6,6 +6,7 @@ var path = require('path');
 var webpack = require('webpack');
 var helpers = require('./helpers');
 
+var projectRootPath = path.resolve(__dirname, '../');
 var assetsPath = path.resolve(__dirname, '../static/dist');
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
@@ -116,6 +117,10 @@ var webpackConfig = module.exports = {
     ]
   },
   resolve: {
+    alias: {
+      '../../theme.config$': path.resolve(projectRootPath, './src/semantic/theme.config'),
+      heading: path.resolve(projectRootPath, './src/semantic/heading.less'),
+    },
     modules: [
       'src',
       'node_modules'

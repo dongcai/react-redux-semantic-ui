@@ -76,36 +76,36 @@ export default class Widgets extends Component {
         )}
         {widgets &&
           widgets.length && (
-            <Table celled>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>ID</Table.HeaderCell>
-                  <Table.HeaderCell>Color</Table.HeaderCell>
-                  <Table.HeaderCell>Sprockets</Table.HeaderCell>
-                  <Table.HeaderCell>Owner</Table.HeaderCell>
-                  <Table.HeaderCell />
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {widgets.map(widget =>
-                  editing[widget.id] ? (
-                    <WidgetForm form={String(widget.id)} key={String(widget.id)} initialValues={widget} />
-                  ) : (
-                    <Table.Row>
-                      <Table.Cell>
-                        <Label ribbon>{widget.id}</Label>
-                      </Table.Cell>
-                      <Table.Cell>{widget.color}</Table.Cell>
-                      <Table.Cell>{widget.sprocketCount}</Table.Cell>
-                      <Table.Cell>{widget.owner}</Table.Cell>
-                      <Table.Cell>
-                        <Button onClick={handleEdit(widget)}>Edit</Button>
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-              </Table.Body>
-            </Table>
-          )}
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>ID</Table.HeaderCell>
+                <Table.HeaderCell>Color</Table.HeaderCell>
+                <Table.HeaderCell>Sprockets</Table.HeaderCell>
+                <Table.HeaderCell>Owner</Table.HeaderCell>
+                <Table.HeaderCell />
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {widgets.map(widget =>
+                editing[widget.id] ? (
+                  <WidgetForm form={String(widget.id)} key={String(widget.id)} initialValues={widget} />
+                ) : (
+                  <Table.Row>
+                    <Table.Cell>
+                      <Label ribbon>{widget.id}</Label>
+                    </Table.Cell>
+                    <Table.Cell>{widget.color}</Table.Cell>
+                    <Table.Cell>{widget.sprocketCount}</Table.Cell>
+                    <Table.Cell>{widget.owner}</Table.Cell>
+                    <Table.Cell>
+                      <Button onClick={handleEdit(widget)}>Edit</Button>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+            </Table.Body>
+          </Table>
+        )}
       </div>
     );
   }

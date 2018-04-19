@@ -133,6 +133,10 @@ module.exports = {
     ]
   },
   resolve: {
+    alias: {
+      '../../theme.config$': path.resolve(projectRootPath, './src/semantic/theme.config'),
+      heading: path.resolve(projectRootPath, './src/semantic/heading.less'),
+    },
     modules: [
       'src',
       'node_modules'
