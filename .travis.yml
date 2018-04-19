@@ -37,7 +37,7 @@ cache:
 script:
   - yarn lint
   - yarn test
-#  - yarn test-node
+  - yarn test-node
 
 env:
   - TRAVIS=travis CXX=g++-4.8
