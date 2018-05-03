@@ -2,7 +2,7 @@
   "name": "react-redux-semantic-ui",
   "description": "Example of an isomorphic (universal) webapp using react redux, semantic-ui and hot reloading",
   "authors": [
-    "Dong Cai <dcai@live.com> (https://github.com/dongcai"
+    "Dong Cai <dcai@live.com> (https://github.com/dongcai)"
   ],
   "contributors": [
     "Erik Rasmussen <rasmussenerik@gmail.com> (https://github.com/erikras)",
@@ -75,7 +75,7 @@
     "@feathersjs/socketio": "^3.0.1",
     "@feathersjs/socketio-client": "^1.0.1",
     "async": "^2.1.4",
-    "axios": "^0.17.0",
+    "axios": "^0.18.0",
     "babel-core": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dynamic-import-node": "^1.1.0",
