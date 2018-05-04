@@ -9,7 +9,7 @@
     "Kévin Berthommier <kevin.bertho@gmail.com> (https://github.com/bertho-zero)"
   ],
   "license": "MIT",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/dongcai/react-redux-semantic-ui"
@@ -92,8 +92,8 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
-    "feathers-authentication-hooks": "^0.1.6",
-    "feathers-hooks-common": "^3.7.1",
+    "feathers-authentication-hooks": "^0.2.0",
+    "feathers-hooks-common": "^4.10.0",
     "feathers-nedb": "3.0.0",
     "history": "^4.7.2",
     "http-proxy": "^1.16.2",
@@ -117,9 +117,9 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-semantic-redux-form": "^1.2.5",
-    "recompose": "^0.26.0",
+    "recompose": "^0.27.0",
     "redial": "^0.5.0",
-    "redux": "^3.6.0",
+    "redux": "^4.0.0",
     "redux-auth-wrapper": "^2.0.2",
     "redux-form": "^7.2.0",
     "redux-logger": "^3.0.6",
