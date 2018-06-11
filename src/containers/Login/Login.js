@@ -19,12 +19,12 @@ export default class Login extends Component {
     notifSend: PropTypes.func.isRequired
   };
 
-  static defaultProps = {
-    user: null
-  };
-
   static contextTypes = {
     router: PropTypes.object
+  };
+
+  static defaultProps = {
+    user: null
   };
 
   onFacebookLogin = async (err, data) => {

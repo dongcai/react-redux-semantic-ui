@@ -45,12 +45,12 @@ export default class App extends Component {
     pushState: PropTypes.func.isRequired
   };
 
-  static defaultProps = {
-    user: null
-  };
-
   static contextTypes = {
     store: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    user: null
   };
 
   componentWillReceiveProps(nextProps) {
