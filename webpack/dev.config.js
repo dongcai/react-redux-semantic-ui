@@ -168,9 +168,8 @@ var webpackConfig = module.exports = {
 
     helpers.createHappyPlugin('jsx', [
       {
-        loader: 'react-hot-loader/webpack'
-      }, {
         loader: 'babel-loader',
+        exclude: /node_modules(\/|\\)(?!(@feathersjs))/,
         options: babelLoaderQuery
       }, {
         loader: 'eslint-loader',
