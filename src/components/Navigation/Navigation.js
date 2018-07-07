@@ -12,7 +12,7 @@ const NavBarMobile = props => (
       <Icon className={props.styles.closeIt} name="close" size="large" onClick={props.onToggle} />
       <Menu vertical inverted fluid>
         <Menu.Item>
-          <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
+          <Image as={Link} to="/" size="mini" src="https://react.semantic-ui.com/logo.png" onClick={props.onToggle} />
         </Menu.Item>
         {_.map(props.leftItems, item => (
           <Menu.Item as={Link} to={item.to} key={item.key} onClick={props.onToggle}>
@@ -27,7 +27,7 @@ const NavBarMobile = props => (
           <Icon name="sidebar" />
         </Menu.Item>
         <Menu.Item>
-          <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
+          <Image as={Link} to="/" size="mini" src="https://react.semantic-ui.com/logo.png" />
         </Menu.Item>
         <Menu.Menu position="right">
           {_.map(props.rightItems, item => (
@@ -62,7 +62,7 @@ NavBarMobile.defaultProps = {
 const NavBarDesktop = ({ leftItems, rightItems }) => (
   <Menu fixed="top" inverted>
     <Menu.Item>
-      <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
+      <Image as={Link} to="/" size="mini" src="https://react.semantic-ui.com/logo.png" />
     </Menu.Item>
     {_.map(leftItems, item => (
       <Menu.Item as={Link} to={item.to} key={item.key}>

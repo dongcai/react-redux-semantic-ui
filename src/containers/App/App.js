@@ -172,7 +172,7 @@ export default class App extends Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              on Github
+              on Github.
             </a>.
           </p>
         </Segment>
