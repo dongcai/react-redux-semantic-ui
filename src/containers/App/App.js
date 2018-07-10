@@ -82,12 +82,6 @@ export default class App extends Component {
     let leftItems = [
       {
         as: 'Link',
-        content: config.app.title,
-        key: 'home',
-        to: '/'
-      },
-      {
-        as: 'Link',
         content: 'Chat',
         key: 'chat',
         to: '/chat'
@@ -150,7 +144,7 @@ export default class App extends Component {
       <div className={styles.app}>
         <Helmet {...config.app.head} />
 
-        <Navigation leftItems={leftItems} rightItems={rightItems}>
+        <Navigation leftItems={leftItems} rightItems={rightItems} mobileOnly>
           <Container>
             {notifs.global && (
               <Notifs

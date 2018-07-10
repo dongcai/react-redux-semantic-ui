@@ -22,21 +22,27 @@ const NavBarMobile = props => (
       </Menu>
     </Sidebar>
     <Sidebar.Pusher dimmed={props.visible} onClick={props.onPusherClick}>
-      <Menu fixed="top" inverted>
-        <Menu.Item onClick={props.onToggle}>
-          <Icon name="sidebar" />
-        </Menu.Item>
-        <Menu.Item>
-          <Image as={Link} to="/" size="mini" src="https://react.semantic-ui.com/logo.png" />
-        </Menu.Item>
-        <Menu.Menu position="right">
-          {_.map(props.rightItems, item => (
-            <Menu.Item as={Link} to={item.to} key={item.key}>
-              {item.content}
-            </Menu.Item>
-          ))}
-        </Menu.Menu>
-      </Menu>
+      <Responsive minWidth={768}>
+        <NavBarDesktop leftItems={props.leftItems} rightItems={props.rightItems} />
+      </Responsive>
+      <Responsive maxWidth={768}>
+        <Menu fixed="top" inverted>
+          <Menu.Item onClick={props.onToggle}>
+            <Icon name="sidebar" />
+          </Menu.Item>
+          <Menu.Item>
+            <Image as={Link} to="/" size="mini" src="https://react.semantic-ui.com/logo.png" />
+          </Menu.Item>
+
+          <Menu.Menu position="right">
+            {_.map(props.rightItems, item => (
+              <Menu.Item as={Link} to={item.to} key={item.key}>
+                {item.content}
+              </Menu.Item>
+            ))}
+          </Menu.Menu>
+        </Menu>
+      </Responsive>
       {props.children}
     </Sidebar.Pusher>
   </Sidebar.Pushable>
