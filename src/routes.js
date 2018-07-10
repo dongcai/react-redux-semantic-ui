@@ -32,7 +32,7 @@ const routes = [
       { path: '/', exact: true, component: Home },
       { path: '/about', component: About },
       { path: '/chat', component: Chat },
-      { path: '/chat-feathers', component: isAuthenticated(ChatFeathers) },
+      { path: '/chat-with-feathers', component: isAuthenticated(ChatFeathers) },
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
