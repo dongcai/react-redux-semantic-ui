@@ -6,6 +6,7 @@ import Chat from 'containers/Chat/Loadable';
 import ChatFeathers from 'containers/ChatFeathers/Loadable';
 import Login from 'containers/Login/Loadable';
 import LoginSuccess from 'containers/LoginSuccess/Loadable';
+import Logout from 'containers/Logout/Loadable';
 import Register from 'containers/Register/Loadable';
 import Survey from 'containers/Survey/Loadable';
 import Widgets from 'containers/Widgets/Loadable';
@@ -34,6 +35,7 @@ const routes = [
       { path: '/chat', component: Chat },
       { path: '/chat-with-feathers', component: isAuthenticated(ChatFeathers) },
       { path: '/login', component: Login },
+      { path: '/logout', component: Logout },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
       { path: '/survey', component: Survey },
