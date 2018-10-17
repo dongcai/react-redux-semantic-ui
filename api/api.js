@@ -8,7 +8,9 @@ import cookieParser from 'cookie-parser';
 import config from './config';
 import services from './services';
 import channels from './channels';
-import { actionHandler, logger, notFound, errorHandler } from './middleware';
+import {
+  actionHandler, logger, notFound, errorHandler
+} from './middleware';
 import auth from './services/authentication';
 
 process.on('unhandledRejection', error => console.error(error));

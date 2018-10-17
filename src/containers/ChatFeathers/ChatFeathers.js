@@ -4,6 +4,7 @@ import { provideHooks } from 'redial';
 import { connect } from 'react-redux';
 import reducer, * as chatActions from 'redux/modules/chat';
 import { withApp } from 'hoc';
+import { Button } from 'semantic-ui-react';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState, inject } }) => {
@@ -90,9 +91,9 @@ class ChatFeathers extends Component {
                 value={this.state.message}
                 onChange={event => this.setState({ message: event.target.value })}
               />
-              <button className="btn" onClick={this.handleSubmit}>
+              <Button onClick={this.handleSubmit}>
                 Send
-              </button>
+              </Button>
               {error && <div className="text-danger">{error}</div>}
             </form>
           </div>
