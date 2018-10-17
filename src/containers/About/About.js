@@ -6,14 +6,16 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { Button } from 'semantic-ui-react';
 
 @provideHooks({
-  fetch: ({ store: { dispatch, getState } }) => !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
+  fetch: ({ store: { dispatch, getState } }) => !isInfoLoaded(getState())
+    ? dispatch(loadInfo()).catch(() => null)
+    : Promise.resolve()
 })
 class About extends Component {
   state = {
     showKitten: false
   };
 
-  handleToggleKitten = () => this.setState({ showKitten: !this.state.showKitten });
+  handleToggleKitten = () => this.setState(state => ({ showKitten: !state.showKitten }));
 
   render() {
     const { showKitten } = this.state;

@@ -1,4 +1,6 @@
-import { createValidator, required, maxLength, integer, oneOf } from 'utils/validation';
+import {
+  createValidator, required, maxLength, integer, oneOf
+} from 'utils/validation';
 
 export const colors = [
   { key: 'blue', value: 'Blue', text: 'Blue' },

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Button } from 'semantic-ui-react';
 import * as authActions from 'redux/modules/auth';
 
 @connect(state => ({ user: state.auth.user }), authActions)
@@ -45,11 +46,7 @@ should you chose to log out. The choice is yours...
             </p>
 
             <div>
-              <button className="btn btn-danger" onClick={logout}>
-                <i className="fa fa-sign-out" />
-                {' '}
-Log Out
-              </button>
+              <Button onClick={logout}>Log Out</Button>
             </div>
           </div>
         </div>
