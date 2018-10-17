@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field, fieldPropTypes } from 'redux-form';
-import { Form, Label, Input as InputComponent, Table, Button } from 'semantic-ui-react';
+import {
+  Form, Label, Input as InputComponent, Table, Button
+} from 'semantic-ui-react';
 import { CheckboxField } from 'react-semantic-redux-form';
 import { connect } from 'react-redux';
 import { isValidEmail } from 'redux/modules/survey';
@@ -26,7 +28,7 @@ const Input = ({
   ...rest
 }) => (
   <Form.Field error={!!(touched && error)} required={required} className={styles.inputGroup}>
-    {label && <label>{label}</label>}
+    {label && <span>{label}</span>}
     {showAsyncValidating && asyncValidating && <i className={`fa fa-cog fa-spin ${styles.cog}`} />}
     <InputComponent required={required} {...input} {...rest} />
     <div className={styles.flags}>
@@ -70,7 +72,7 @@ Input.propTypes = fieldPropTypes;
 @connect(state => ({
   active: state.form.survey ? state.form.survey.active : ''
 }))
-export default class SurveyForm extends Component {
+class SurveyForm extends Component {
   static propTypes = {
     active: PropTypes.string,
     asyncValidating: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]).isRequired,
@@ -158,3 +160,5 @@ export default class SurveyForm extends Component {
     );
   }
 }
+
+export default SurveyForm;

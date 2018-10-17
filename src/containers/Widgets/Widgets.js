@@ -27,7 +27,7 @@ const { isLoaded, load: loadWidgets } = widgetActions;
   }),
   widgetActions
 )
-export default class Widgets extends Component {
+class Widgets extends Component {
   static propTypes = {
     widgets: PropTypes.arrayOf(PropTypes.object),
     error: PropTypes.string,
@@ -64,18 +64,35 @@ export default class Widgets extends Component {
         <p>
           If you hit 'Refresh' on your browser, the data loading will take place on the browser after the page is
           returned. If you navigated here from another page, the data was fetched from the client after the route
-          transition. This uses the decorator method <code>@provideHooks</code> with the <code>defer</code> key. To
-          block a route transition until some data is loaded, use the <code>fetch</code> key. To always render before
-          loading data, even on the server, use <code>componentWillMount</code>.
+          transition. This uses the decorator method
+          {' '}
+          <code>@provideHooks</code>
+          {' '}
+with the
+          {' '}
+          <code>defer</code>
+          {' '}
+key. To
+          block a route transition until some data is loaded, use the
+          {' '}
+          <code>fetch</code>
+          {' '}
+key. To always render before
+          loading data, even on the server, use
+          {' '}
+          <code>componentWillMount</code>
+          .
         </p>
         <p>This widgets are stored in your session, so feel free to edit it and refresh.</p>
         {error && (
           <div className="alert alert-danger" role="alert">
-            <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" /> {error}
+            <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
+            {' '}
+            {error}
           </div>
         )}
-        {widgets &&
-          widgets.length && (
+        {widgets
+          && widgets.length && (
           <Table celled>
             <Table.Header>
               <Table.Row>
@@ -87,8 +104,8 @@ export default class Widgets extends Component {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {widgets.map(widget =>
-                editing[widget.id] ? (
+              {widgets.map(
+                widget => editing[widget.id] ? (
                   <WidgetForm form={String(widget.id)} key={String(widget.id)} initialValues={widget} />
                 ) : (
                   <Table.Row>
@@ -102,7 +119,8 @@ export default class Widgets extends Component {
                       <Button onClick={handleEdit(widget)}>Edit</Button>
                     </Table.Cell>
                   </Table.Row>
-                ))}
+                )
+              )}
             </Table.Body>
           </Table>
         )}
@@ -110,3 +128,5 @@ export default class Widgets extends Component {
     );
   }
 }
+
+export default Widgets;

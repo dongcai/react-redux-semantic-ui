@@ -24,7 +24,7 @@ import { withApp } from 'hoc';
   { ...chatActions }
 )
 @withApp
-export default class ChatFeathers extends Component {
+class ChatFeathers extends Component {
   static propTypes = {
     app: PropTypes.shape({
       service: PropTypes.func
@@ -74,7 +74,9 @@ export default class ChatFeathers extends Component {
             <ul>
               {messages.map(msg => (
                 <li key={`chat.msg.${msg._id}`}>
-                  {msg.sentBy.email}: {msg.text}
+                  {msg.sentBy.email}
+:
+                  {msg.text}
                 </li>
               ))}
             </ul>
@@ -99,3 +101,5 @@ export default class ChatFeathers extends Component {
     );
   }
 }
+
+export default ChatFeathers;

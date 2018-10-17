@@ -6,7 +6,7 @@ import { socket } from 'app';
 import { Button, Input } from 'semantic-ui-react';
 
 @connect(state => ({ user: state.auth.user }))
-export default class Chat extends Component {
+class Chat extends Component {
   static propTypes = {
     user: PropTypes.shape({
       email: PropTypes.string
@@ -65,7 +65,9 @@ export default class Chat extends Component {
           <ul>
             {this.state.messages.map(msg => (
               <li key={`chat.msg.${msg.id}`}>
-                {msg.from}: {msg.text}
+                {msg.from}
+:
+                {msg.text}
               </li>
             ))}
           </ul>
@@ -80,7 +82,8 @@ export default class Chat extends Component {
               onChange={event => {
                 this.setState({ message: event.target.value });
               }}
-            />{' '}
+            />
+            {' '}
             <Button primary onClick={this.handleSubmit}>
               Send
             </Button>
@@ -90,3 +93,5 @@ export default class Chat extends Component {
     );
   }
 }
+
+export default Chat;

@@ -9,7 +9,7 @@ import { Button } from 'semantic-ui-react';
   (state, { multireducerKey: key }) => ({ count: state.counter[key].count }),
   (dispatch, { multireducerKey: key }) => bindActionCreators(counterActions, dispatch, key)
 )
-export default class CounterButton extends Component {
+class CounterButton extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
@@ -24,8 +24,16 @@ export default class CounterButton extends Component {
     const { count, increment, color } = this.props;
     return (
       <Button color={color} onClick={increment} style={{ marginBottom: '10px' }}>
-        You have clicked me {count} time{count === 1 ? '' : 's'}.
+        You have clicked me
+        {' '}
+        {count}
+        {' '}
+time
+        {count === 1 ? '' : 's'}
+        .
       </Button>
     );
   }
 }
+
+export default CounterButton;

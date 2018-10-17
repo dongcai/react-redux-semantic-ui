@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
-import { Icon, Image, Menu, Sidebar, Responsive } from 'semantic-ui-react';
+import {
+  Icon, Image, Menu, Sidebar, Responsive
+} from 'semantic-ui-react';
 
 const NavBarMobile = props => (
   <Sidebar.Pushable>
@@ -123,7 +125,14 @@ export default class Navigation extends Component {
     if (visible) this.setState({ visible: false });
   };
 
-  handleToggle = () => this.setState({ visible: !this.state.visible });
+  // use this.setState({visible: !this.state.visible} is bad
+  // because if you click toggle more than twice in the same cycle
+  // react may do the batch update, and only one being executed, and you will see the toggle failed
+  // ref: https://reactjs.org/docs/react-component.html#setstate
+
+  handleToggle = () => {
+    this.setState(state => ({ visible: !state.visible }));
+  };
 
   render() {
     const {

@@ -12,7 +12,7 @@ import SurveyForm from 'components/SurveyForm/SurveyForm';
   fetch: ({ store: { inject } }) => inject({ survey: reducer })
 })
 @connect(() => ({}), { initialize })
-export default class Survey extends Component {
+class Survey extends Component {
   static propTypes = {
     initialize: PropTypes.func.isRequired
   };
@@ -50,31 +50,54 @@ export default class Survey extends Component {
           <li>Validation errors are only shown onBlur</li>
           <li>Validation errors are hidden onChange when the error is rectified</li>
           <li>
-            <code>valid</code>, <code>invalid</code>, <code>pristine</code> and <code>dirty</code> flags are passed with
-            each change
+            <code>valid</code>
+            ,
+            <code>invalid</code>
+            ,
+            <code>pristine</code>
+            {' '}
+and
+            <code>dirty</code>
+            {' '}
+flags are passed with each change
           </li>
           <li>
-            <em>Except</em> when you submit the form, in which case they are shown for all invalid fields.
+            <em>Except</em>
+            {' '}
+when you submit the form, in which case they are shown for all invalid fields.
           </li>
           <li>
-            If you click the Initialize Form button, the form will be prepopupated with some values and the{' '}
-            <code>pristine</code> and <code>dirty</code> flags will be based on those values.
+            If you click the Initialize Form button, the form will be prepopupated with some values and the
+            {' '}
+            <code>pristine</code>
+            {' '}
+and
+            <code>dirty</code>
+            {' '}
+flags will be based on those values.
           </li>
         </ul>
 
         <p>
-          Pardon the use of <code>window.alert()</code>, but I wanted to keep this component stateless.
+          Pardon the use of
+          {' '}
+          <code>window.alert()</code>
+          , but I wanted to keep this component stateless.
         </p>
 
         <div style={{ textAlign: 'center', margin: 15 }}>
           <Button primary onClick={this.handleInitialize} icon>
-            <Icon name="edit" /> Initialize Form
+            <Icon name="edit" />
+            {' '}
+Initialize Form
           </Button>
         </div>
 
         <p>
-          The circles to the left of the inputs correspond to flags provided by <code>redux-form</code>: Touched,
-          Visited, Active, and Dirty.
+          The circles to the left of the inputs correspond to flags provided by
+          {' '}
+          <code>redux-form</code>
+          : Touched, Visited, Active, and Dirty.
         </p>
 
         <SurveyForm onSubmit={this.handleSubmit} />
@@ -82,3 +105,5 @@ export default class Survey extends Component {
     );
   }
 }
+
+export default Survey;

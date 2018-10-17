@@ -1,5 +1,7 @@
 import _ from 'lodash';
-import { createStore as _createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import {
+  createStore as _createStore, applyMiddleware, compose, combineReducers
+} from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { createPersistoid, persistCombineReducers, REGISTER } from 'redux-persist';
 import clientMiddleware from './middleware/clientMiddleware';

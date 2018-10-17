@@ -5,7 +5,7 @@ import { load } from 'redux/modules/info';
 import { Message, Button } from 'semantic-ui-react';
 
 @connect(state => ({ info: state.info.data }), { load })
-export default class InfoBar extends Component {
+class InfoBar extends Component {
   static propTypes = {
     info: PropTypes.shape({
       message: PropTypes.string,
@@ -25,7 +25,9 @@ export default class InfoBar extends Component {
       <div className={styles.wrapper}>
         <Message info>
           <Message.Header>
-            This is an info bar <strong>{info ? info.message : 'no info!'}</strong>
+            This is an info bar
+            {' '}
+            <strong>{info ? info.message : 'no info!'}</strong>
           </Message.Header>
           <p className={styles.time}>{info && new Date(info.time).toString()}</p>
           <Button onClick={load}>Reload from server</Button>
@@ -34,3 +36,5 @@ export default class InfoBar extends Component {
     );
   }
 }
+
+export default InfoBar;

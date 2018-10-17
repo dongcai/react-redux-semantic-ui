@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { reduxForm, Field, getFormValues, SubmissionError } from 'redux-form';
+import {
+  reduxForm, Field, getFormValues, SubmissionError
+} from 'redux-form';
 import { InputField, SelectField } from 'react-semantic-redux-form';
 import { Button, Message } from 'semantic-ui-react';
 import * as widgetActions from 'redux/modules/widgets';
@@ -18,7 +20,7 @@ import widgetValidation, { colors } from './widgetValidation';
   }),
   { ...widgetActions }
 )
-export default class WidgetForm extends Component {
+class WidgetForm extends Component {
   static propTypes = {
     editStop: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -64,13 +66,12 @@ export default class WidgetForm extends Component {
             Cancel
           </Button>
           <Button
-            onClick={handleSubmit(() =>
-              save(values).catch(err => {
-                if (typeof err === 'object') {
-                  throw new SubmissionError(err);
-                }
-                return Promise.reject(err);
-              }))}
+            onClick={handleSubmit(() => save(values).catch(err => {
+              if (typeof err === 'object') {
+                throw new SubmissionError(err);
+              }
+              return Promise.reject(err);
+            }))}
             disabled={pristine || invalid || submitting}
           >
             Save
@@ -85,3 +86,5 @@ export default class WidgetForm extends Component {
     );
   }
 }
+
+export default WidgetForm;

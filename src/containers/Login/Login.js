@@ -9,7 +9,7 @@ import * as authActions from 'redux/modules/auth';
 import * as notifActions from 'redux/modules/notifs';
 
 @connect(state => ({ user: state.auth.user }), { ...notifActions, ...authActions })
-export default class Login extends Component {
+class Login extends Component {
   static propTypes = {
     user: PropTypes.shape({
       email: PropTypes.string
@@ -82,7 +82,11 @@ export default class Login extends Component {
         )}
         {user && (
           <div>
-            <p>You are currently logged in as {user.email}.</p>
+            <p>
+              You are currently logged in as
+              {user.email}
+              .
+            </p>
 
             <div>
               <Button onClick={logout}>Log Out</Button>
@@ -93,3 +97,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default Login;

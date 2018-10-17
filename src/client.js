@@ -110,8 +110,10 @@ global.socket = initSocket();
     window.React = React; // enable debugger
 
     if (!dest || !dest.firstChild || !dest.firstChild.attributes || !dest.firstChild.attributes['data-reactroot']) {
-      console.error('Server-side React render was discarded.\n' +
-          'Make sure that your initial render does not contain any client-side code.');
+      console.error(
+        'Server-side React render was discarded.\n'
+          + 'Make sure that your initial render does not contain any client-side code.'
+      );
     }
   }
 

@@ -9,7 +9,7 @@ import loginValidation from './loginValidation';
   form: 'login',
   validate: loginValidation
 })
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   static propTypes = {
     ...propTypes
   };
@@ -31,3 +31,5 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+export default LoginForm;

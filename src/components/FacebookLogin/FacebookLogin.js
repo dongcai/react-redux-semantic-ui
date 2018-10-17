@@ -66,9 +66,8 @@ class FacebookLogin extends Component {
   click = () => {
     const { scope, appId } = this.props;
     if (navigator.userAgent.match('CriOS')) {
-      window.location.href =
-        `https://www.facebook.com/dialog/oauth?client_id=${appId}` +
-        `&redirect_uri=${window.location.href}&state=facebookdirect&${scope}`;
+      window.location.href = `https://www.facebook.com/dialog/oauth?client_id=${appId}`
+        + `&redirect_uri=${window.location.href}&state=facebookdirect&${scope}`;
     } else {
       window.FB.login(
         response => {

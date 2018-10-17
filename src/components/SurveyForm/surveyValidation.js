@@ -1,5 +1,7 @@
 import memoize from 'lru-memoize';
-import { createValidator, required, maxLength, email } from 'utils/validation';
+import {
+  createValidator, required, maxLength, email
+} from 'utils/validation';
 
 const surveyValidation = createValidator({
   name: [required, maxLength(10)],

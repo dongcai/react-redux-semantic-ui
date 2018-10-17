@@ -8,7 +8,7 @@ import registerValidation from './registerValidation';
   form: 'register',
   validate: registerValidation
 })
-export default class RegisterForm extends Component {
+class RegisterForm extends Component {
   static propTypes = {
     ...propTypes
   };
@@ -31,3 +31,5 @@ export default class RegisterForm extends Component {
     );
   }
 }
+
+export default RegisterForm;

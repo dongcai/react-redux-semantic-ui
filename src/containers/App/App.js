@@ -31,7 +31,7 @@ import Navigation from '../../components/Navigation/Navigation';
   { logout, pushState: push }
 )
 @withRouter
-export default class App extends Component {
+class App extends Component {
   static propTypes = {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -46,7 +46,7 @@ export default class App extends Component {
   };
 
   static contextTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.objectOf(PropTypes.any).isRequired
   };
 
   static defaultProps = {
@@ -160,17 +160,21 @@ export default class App extends Component {
 
         <Segment textAlign="center" vertical inverted>
           <p>
-            Have questions? Ask for help{' '}
+            Have questions? Ask for help
+            {' '}
             <a
               href="https://github.com/dongcai/react-redux-semantic-ui/issues"
               target="_blank"
               rel="noopener noreferrer"
             >
               on Github.
-            </a>.
+            </a>
+            .
           </p>
         </Segment>
       </div>
     );
   }
 }
+
+export default App;

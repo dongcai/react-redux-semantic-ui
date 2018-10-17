@@ -6,10 +6,9 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { Button } from 'semantic-ui-react';
 
 @provideHooks({
-  fetch: ({ store: { dispatch, getState } }) =>
-    !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
+  fetch: ({ store: { dispatch, getState } }) => !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
 })
-export default class About extends Component {
+class About extends Component {
   state = {
     showKitten: false
   };
@@ -25,31 +24,40 @@ export default class About extends Component {
         <Helmet title="About Us" />
 
         <p>
-          This project is maintained by Dong Cai (<a
+          This project is maintained by Dong Cai (
+          <a
             href="https://github.com/dongcai"
             target="_blank"
             rel="noopener noreferrer"
           >
             @dongcai
-          </a>), Kévin Berthommier (
+          </a>
+), Kévin Berthommier (
           <a href="https://github.com/bertho-zero" target="_blank" rel="noopener noreferrer">
             @bertho-zero
-          </a>) and was originally created by Erik Rasmussen (
+          </a>
+) and was originally created by Erik Rasmussen (
           <a href="https://twitter.com/erikras" target="_blank" rel="noopener noreferrer">
             @erikras
-          </a>),<br />
-          but has since seen many contributions from the open source community. Thank you to{' '}
+          </a>
+),
+          <br />
+          but has since seen many contributions from the open source community. Thank you to
+          {' '}
           <a
             href="https://github.com/bertho-zero/react-redux-universal-hot-example/graphs/contributors"
             target="_blank"
             rel="noopener noreferrer"
           >
             all the contributors
-          </a>.
+          </a>
+.
         </p>
 
         <h3>
-          Mini Bar <span style={{ color: '#aaa' }}>(not that kind)</span>
+          Mini Bar
+          {' '}
+          <span style={{ color: '#aaa' }}>(not that kind)</span>
         </h3>
 
         <p>
@@ -81,3 +89,4 @@ export default class About extends Component {
     );
   }
 }
+export default About;

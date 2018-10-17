@@ -4,13 +4,15 @@ import { connect } from 'react-redux';
 import * as authActions from 'redux/modules/auth';
 
 @connect(null, authActions)
-export default class Logout extends Component {
+class Logout extends Component {
   static propTypes = {
     logout: PropTypes.func.isRequired
   };
+
   componentWillMount() {
     this.props.logout();
   }
+
   render() {
     return (
       <div className="container">
@@ -22,3 +24,5 @@ export default class Logout extends Component {
     );
   }
 }
+
+export default Logout;
