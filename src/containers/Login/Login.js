@@ -19,10 +19,6 @@ class Login extends Component {
     notifSend: PropTypes.func.isRequired
   };
 
-  static contextTypes = {
-    router: PropTypes.object
-  };
-
   static defaultProps = {
     user: null
   };
