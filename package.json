@@ -94,7 +94,6 @@
     "feathers-authentication-hooks": "^0.3.0",
     "feathers-hooks-common": "^4.10.0",
     "feathers-nedb": "^3.1.0",
-    "fsevents": "^1.2.4",
     "history": "^4.7.2",
     "http-proxy": "^1.16.2",
     "is-promise": "^2.1.0",
