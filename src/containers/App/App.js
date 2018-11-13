@@ -109,6 +109,12 @@ class App extends Component {
         content: 'About',
         key: 'about',
         to: '/about'
+      },
+      {
+        as: 'Link',
+        content: 'Template',
+        key: 'template',
+        to: '/template'
       }
     ];
 
