@@ -12,16 +12,15 @@ import {
   Message,
   Header,
   Icon,
-  Image,
   Grid,
 } from 'semantic-ui-react';
 
 // You can delete everything you want pretty much and start fresh.
 // delete all the comments for sure.
 
-// if you are an advanced coder. don't bother reading.
+// if you are an advanced coder. don"t bother reading.
 // These comments are for newer users like myself.
-// ... if you're new, these instructions are helpful,
+// ... if you"re new, these instructions are helpful,
 // but not gospel, simply what worked for me.
 
 // The last import lines above way up there ^^ is where styles come from.
@@ -30,7 +29,7 @@ import {
 
 // "Template" in context of the next line of code,
 // will be swapped for whatever you want
-// if you're making a picture page, maybe you'll change it to "pictures".
+// if you"re making a picture page, maybe you"ll change it to "pictures".
 // at the end of the page, the ~export~ has to match the word you use here.
 // when you pull "template", export defines what your app calls
 // what is exported is everything in betwen the class mustaches "{... }"
@@ -44,28 +43,28 @@ import {
 class Template extends Component {
   render() {
     return (
-      <div className='container'>
-        <Helmet title='Template' />
-        <Segment color='teal' raised>
-          <Container fluid textAlign='center'>
-            <Header as='h2' icon>
-              <Icon name='copy outline' />
+      <div className="container">
+        <Helmet title="Template" />
+        <Segment color="teal" raised>
+          <Container fluid textAlign="center">
+            <Header as="h2" icon>
+              <Icon name="copy outline" />
               Template Page
               <Header.Subheader>Adding pages to your app 101</Header.Subheader>
             </Header>
           </Container>
-          <Message floating compact size='tiny'>
+          <Message floating compact size="tiny">
             {' '}
             Using your prefered IDE, ie: Visual Studio Code, search all files
-            inside the "src" folder for the word "template" and you'll find all
+            inside the "src" folder for the word "template" and you"ll find all
             the references to this page. However, For the Quick visual, Below
             are the files you will need to modify, and the folders they are in.
           </Message>
         </Segment>
-        <Segment color='teal' raised>
-          <Message floating compact size='tiny'>
+        <Segment color="teal" raised>
+          <Message floating compact size="tiny">
             <p>
-              if you're using VScode, or any kind of halway customized IDE,
+              if you"re using VScode, or any kind of halway customized IDE,
               choose "Typescript React" as a language. The colour coding and
               automatic foratting with "Prettier" and "Beautify" and "ESLINT"
               work well with this kit.
@@ -73,14 +72,14 @@ class Template extends Component {
             <p>
               So, i did also want to include a personal touch with my first
               contribution to any git, ever. (this page and the modifications to
-              the other files denoting "template"), so in addition to that, i'm
+              the other files denoting "template"), so in addition to that, i"m
               adding this link to a public Gist on github, a copy of my VScode
               sync settings, and installed extensions
-              <a href='https://gist.github.com/kaigouthro/b2c9cafae8a9a480b0802847c8cdba18'>
+              <a href="https://gist.github.com/kaigouthro/b2c9cafae8a9a480b0802847c8cdba18">
                 . Check it here
               </a>
               fork it to your own gist and use
-              <a href='https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync'>
+              <a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync">
                 {' '}
                 Vs settings sync addon.
               </a>
@@ -91,10 +90,10 @@ class Template extends Component {
             <Grid columns={2} stackable>
               <Grid.Row>
                 <Grid.Column>
-                  <Segment raised color='blue'>
+                  <Segment raised color="blue">
                     <List>
                       <List.Item>
-                        <List.Icon color='orange' name='folder open' />
+                        <List.Icon color="orange" name="folder open" />
                         <List.Content>
                           <List.Header>src</List.Header>
                           <List.Description>
@@ -102,7 +101,7 @@ class Template extends Component {
                           </List.Description>
                           <List.List>
                             <List.Item>
-                              <List.Icon color='purple' name='folder open' />
+                              <List.Icon color="purple" name="folder open" />
                               <List.Content>
                                 <List.Header>Containers</List.Header>
                                 <List.Description>
@@ -110,7 +109,7 @@ class Template extends Component {
                                 </List.Description>
                                 <List.List>
                                   <List.Item>
-                                    <List.Icon color='teal' name='folder' />
+                                    <List.Icon color="teal" name="folder" />
                                     <List.Content>
                                       <List.Header>App</List.Header>
                                       <List.Description>
@@ -118,11 +117,11 @@ class Template extends Component {
                                       </List.Description>
                                       <List.List>
                                         <List.Item>
-                                          <List.Icon color='blue' name='file' />
+                                          <List.Icon color="blue" name="file" />
                                           <List.Content>
                                             <List.Header>App.js</List.Header>
                                             <List.Description>
-                                              You'll find template has been
+                                              You"ll find template has been
                                               added to the main app here.
                                             </List.Description>
                                           </List.Content>
@@ -131,7 +130,7 @@ class Template extends Component {
                                     </List.Content>
                                   </List.Item>
                                   <List.Item>
-                                    <List.Icon color='teal' name='folder' />
+                                    <List.Icon color="teal" name="folder" />
                                     <List.Content>
                                       <List.Header>Template</List.Header>
                                       <List.Description>
@@ -139,19 +138,19 @@ class Template extends Component {
                                       </List.Description>
                                       <List.List>
                                         <List.Item>
-                                          <List.Icon color='blue' name='file' />
+                                          <List.Icon color="blue" name="file" />
                                           <List.Content>
                                             <List.Header>
                                               Template.js
                                             </List.Header>
                                             <List.Description>
-                                              You'll find template has been
+                                              You"ll find template has been
                                               added to the main app here.
                                             </List.Description>
                                           </List.Content>
                                         </List.Item>
                                         <List.Item>
-                                          <List.Icon color='blue' name='file' />
+                                          <List.Icon color="blue" name="file" />
                                           <List.Content>
                                             <List.Header>
                                               Loadable.js
@@ -169,16 +168,16 @@ class Template extends Component {
                               </List.Content>
                             </List.Item>
                             <List.Item>
-                              <List.Icon color='purple' name='file' />
+                              <List.Icon color="purple" name="file" />
                               <List.Content>
                                 <List.Header>config.js</List.Header>
                                 <List.Description>
-                                  App's Main Config file
+                                  App"s Main Config file
                                 </List.Description>
                               </List.Content>
                             </List.Item>
                             <List.Item>
-                              <List.Icon color='purple' name='file' />
+                              <List.Icon color="purple" name="file" />
                               <List.Content>
                                 <List.Header>routes.js</List.Header>
                                 <List.Description>
@@ -193,13 +192,13 @@ class Template extends Component {
                   </Segment>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment raised color='blue'>
-                    <Header as='h1'>
+                  <Segment raised color="blue">
+                    <Header as="h1">
                       <Icon
                         bordered
                         inverted
-                        color='teal'
-                        name='images outline'
+                        color="teal"
+                        name="images outline"
                       />
                       <Header.Content>
                         Bonus Resources
@@ -211,30 +210,30 @@ class Template extends Component {
                       </Header.Content>
                     </Header>
                     <List bulleted>
-                      <List.Item href='https://dribbble.com/'>
+                      <List.Item href="https://dribbble.com/">
                         Dribbbl
                       </List.Item>
-                      <List.Item href='https://tripwire.github.io/octagon/'>
+                      <List.Item href="https://tripwire.github.io/octagon/">
                         Octagon (for semantic-ui-react)
                       </List.Item>
-                      <List.Item href='http://fltdsgn.com/'>
+                      <List.Item href="http://fltdsgn.com/">
                         Flat UI Design
                       </List.Item>
-                      <List.Item href='https://www.canva.com/'>Canva</List.Item>
-                      <List.Item href='https://unsplash.com/'>
+                      <List.Item href="https://www.canva.com/">Canva</List.Item>
+                      <List.Item href="https://unsplash.com/">
                         Unsplash
                       </List.Item>
-                      <List.Item href='http://startupstockphotos.com/'>
+                      <List.Item href="http://startupstockphotos.com/">
                         Startup Stock Photos
                       </List.Item>
-                      <List.Item href='http://deathtothestockphoto.com/'>
+                      <List.Item href="http://deathtothestockphoto.com/">
                         Death to the Stock Photo
                       </List.Item>
-                      <List.Item href='http://fortawesome.github.io/Font-Awesome/'>
+                      <List.Item href="http://fortawesome.github.io/Font-Awesome/">
                         Font Awesome
                       </List.Item>
-                      <List.Item href='https://icomoon.io/'>Ico Moon</List.Item>
-                      <List.Item href='https://elements.envato.com/'>
+                      <List.Item href="https://icomoon.io/">Ico Moon</List.Item>
+                      <List.Item href="https://elements.envato.com/">
                         Envato Elements
                       </List.Item>
                     </List>
@@ -265,11 +264,11 @@ export default Template;
 // all the places you need to go to add a new page.
 
 // So, in conclusion, that should be your first order of business.
-// Renaming "template" to some other word combination you'll never use
+// Renaming "template" to some other word combination you"ll never use
 // anywhere else as a variable or even in text.
-// For myself, it's as my example said.
+// For myself, it"s as my example said.
 
-// a horse riding a cowboy. in this case, you're the cowboy.
+// a horse riding a cowboy. in this case, you"re the cowboy.
 // this boilerplate is the horse. much larger and far more powerful.
 
 // Good Luck. - KG the noob.
