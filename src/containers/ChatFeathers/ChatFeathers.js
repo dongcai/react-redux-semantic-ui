@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import reducer, * as chatActions from 'redux/modules/chat';
 import { withApp } from 'hoc';
 import {
-  Button, Form, Label, Input
+  Button,
+  Segment,
+  Form,
+  Label,
+  Input,
+  List,
+  Icon,
+  Header,
 } from 'semantic-ui-react';
 
 @provideHooks({
@@ -71,22 +78,23 @@ class ChatFeathers extends Component {
   render() {
     const { user, messages } = this.props;
     const { error } = this.state;
-
     return (
       <div className="container">
-        <h1>Chat</h1>
-
+        <Header as="h3">
+          <Icon name="chat" />
+          Chat with Feathers.
+        </Header>
         {user && (
-          <div>
-            <ul>
+          <Segment Raised>
+            <List bulleted>
               {messages.map(msg => (
-                <li key={`chat.msg.${msg._id}`}>
+                <List.Item key={`chat.msg.${msg._id}`}>
                   {msg.sentBy.email}
-                  :
+                  :&nbsp;&nbsp;
                   {msg.text}
-                </li>
+                </List.Item>
               ))}
-            </ul>
+            </List>
             <Form onSubmit={this.handleSubmit}>
               <Form.Field inline>
                 <Label>Message</Label>
@@ -100,11 +108,20 @@ class ChatFeathers extends Component {
                   onChange={event => this.setState({ message: event.target.value })
                   }
                 />
-                <Button onClick={this.handleSubmit}>Send</Button>
-                {error && <div className="text-danger">{error}</div>}
+                <Button
+                  onClick={this.handleSubmit}
+                  icon="send"
+                  content=" Send"
+                />
+                {error && (
+                  <Label as={error}>
+                    <Icon name="cancel" />
+                    {error}
+                  </Label>
+                )}
               </Form.Field>
             </Form>
-          </div>
+          </Segment>
         )}
       </div>
     );
