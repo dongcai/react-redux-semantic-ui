@@ -4,7 +4,9 @@ import { provideHooks } from 'redial';
 import { connect } from 'react-redux';
 import reducer, * as chatActions from 'redux/modules/chat';
 import { withApp } from 'hoc';
-import { Button } from 'semantic-ui-react';
+import {
+  Button, Form, Label, Input
+} from 'semantic-ui-react';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState, inject } }) => {
@@ -15,12 +17,12 @@ import { Button } from 'semantic-ui-react';
     if (state.online) {
       return dispatch(chatActions.load()).catch(() => null);
     }
-  }
+  },
 })
 @connect(
   state => ({
     user: state.auth.user,
-    messages: state.chat.messages
+    messages: state.chat.messages,
   }),
   { ...chatActions }
 )
@@ -28,18 +30,18 @@ import { Button } from 'semantic-ui-react';
 class ChatFeathers extends Component {
   static propTypes = {
     app: PropTypes.shape({
-      service: PropTypes.func
+      service: PropTypes.func,
     }).isRequired,
     user: PropTypes.shape({
-      email: PropTypes.string
+      email: PropTypes.string,
     }).isRequired,
     addMessage: PropTypes.func.isRequired,
-    messages: PropTypes.arrayOf(PropTypes.object).isRequired
+    messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   state = {
     message: '',
-    error: null
+    error: null,
   };
 
   componentDidMount() {
@@ -47,14 +49,18 @@ class ChatFeathers extends Component {
   }
 
   componentWillUnmount() {
-    this.props.app.service('messages').removeListener('created', this.props.addMessage);
+    this.props.app
+      .service('messages')
+      .removeListener('created', this.props.addMessage);
   }
 
   handleSubmit = async event => {
     event.preventDefault();
 
     try {
-      await this.props.app.service('messages').create({ text: this.state.message });
+      await this.props.app
+        .service('messages')
+        .create({ text: this.state.message });
       this.setState({ message: '', error: false });
     } catch (error) {
       console.log(error);
@@ -76,26 +82,28 @@ class ChatFeathers extends Component {
               {messages.map(msg => (
                 <li key={`chat.msg.${msg._id}`}>
                   {msg.sentBy.email}
-:
+                  :
                   {msg.text}
                 </li>
               ))}
             </ul>
-            <form onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                ref={c => {
-                  this.message = c;
-                }}
-                placeholder="Enter your message"
-                value={this.state.message}
-                onChange={event => this.setState({ message: event.target.value })}
-              />
-              <Button onClick={this.handleSubmit}>
-                Send
-              </Button>
-              {error && <div className="text-danger">{error}</div>}
-            </form>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Field inline>
+                <Label>Message</Label>
+                <Input
+                  type="text"
+                  ref={c => {
+                    this.message = c;
+                  }}
+                  placeholder="Enter your message"
+                  value={this.state.message}
+                  onChange={event => this.setState({ message: event.target.value })
+                  }
+                />
+                <Button onClick={this.handleSubmit}>Send</Button>
+                {error && <div className="text-danger">{error}</div>}
+              </Form.Field>
+            </Form>
           </div>
         )}
       </div>
