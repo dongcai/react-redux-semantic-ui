@@ -65,7 +65,8 @@ class About extends Component {
         </p>
         <h3>
           Mini Bar
-          <span style={{ color: '#aaa' }}>(not that kind)
+          <span style={{ color: '#aaa' }}>
+          (not that kind)
           </span>
         </h3>
         <p>
