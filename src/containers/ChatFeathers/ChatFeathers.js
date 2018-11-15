@@ -10,9 +10,10 @@ import {
   Form,
   Label,
   Input,
-  List,
   Icon,
   Header,
+  Container,
+  Message
 } from 'semantic-ui-react';
 
 @provideHooks({
@@ -78,52 +79,48 @@ class ChatFeathers extends Component {
   render() {
     const { user, messages } = this.props;
     const { error } = this.state;
-    return (
-      <div className="container">
-        <Header as="h3">
-          <Icon name="chat" />
-          Chat with Feathers.
-        </Header>
+    return (     // SUIR.. made it all skinned with semanti-ui. lookss pretty.
+      <Container>
+        <Segment raised color="blue">
+          <Header as="h3">
+            <Icon name="chat" />
+            Chat with Feathers.
+          </Header>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field inline>
+              <Label>Message</Label>
+              <Input
+                type="text"
+                ref={c => {
+                  this.message = c;
+                }}
+                placeholder="Enter your message"
+                value={this.state.message}
+                onChange={event => this.setState({ message: event.target.value })
+                }
+              />
+              <Button onClick={this.handleSubmit} icon="send" content=" Send" />
+              {error && (
+                <Label as={error}>
+                  <Icon name="cancel" />
+                  {error}
+                </Label>
+              )}
+            </Form.Field>
+          </Form>
+        </Segment>
         {user && (
-          <Segment Raised>
-            <List bulleted>
-              {messages.map(msg => (
-                <List.Item key={`chat.msg.${msg._id}`}>
-                  {msg.sentBy.email}
-                  :&nbsp;&nbsp;
-                  {msg.text}
-                </List.Item>
-              ))}
-            </List>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Field inline>
-                <Label>Message</Label>
-                <Input
-                  type="text"
-                  ref={c => {
-                    this.message = c;
-                  }}
-                  placeholder="Enter your message"
-                  value={this.state.message}
-                  onChange={event => this.setState({ message: event.target.value })
-                  }
-                />
-                <Button
-                  onClick={this.handleSubmit}
-                  icon="send"
-                  content=" Send"
-                />
-                {error && (
-                  <Label as={error}>
-                    <Icon name="cancel" />
-                    {error}
-                  </Label>
-                )}
-              </Form.Field>
-            </Form>
+          <Segment color="teal" raised>
+            {messages.map(msg => (
+              <Message key={`chat.msg.${msg._id}`} raised size="tiny">
+                {msg.sentBy.email}
+                :&nbsp;&nbsp;
+                {msg.text}
+              </Message>
+            ))}
           </Segment>
         )}
-      </div>
+      </Container>
     );
   }
 }

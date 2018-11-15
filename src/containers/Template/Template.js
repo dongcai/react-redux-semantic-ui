@@ -12,6 +12,7 @@ import {
   Message,
   Header,
   Icon,
+  Image,
   Grid,
 } from 'semantic-ui-react';
 
@@ -42,6 +43,7 @@ import {
 // eslint-disable-next-line react/prefer-stateless-function
 class Template extends Component {
   render() {
+    const searchtemplateimage = require('./search.jpg');
     return (
       <div className="container">
         <Helmet title="Template" />
@@ -50,13 +52,13 @@ class Template extends Component {
             <Header as="h2" icon>
               <Icon name="copy outline" />
               Template Page
-              <Header.Subheader>Adding pages to your app 101</Header.Subheader>
+              <Header.Subheader>Adding pages to your app, and other help.. for noobs, by a noob.</Header.Subheader>
             </Header>
           </Container>
           <Message floating compact size="tiny">
             {' '}
             Using your prefered IDE, ie: Visual Studio Code, search all files
-            inside the "src" folder for the word "template" and you"ll find all
+            inside the 'src' folder for the word 'template' and you'll find all
             the references to this page. However, For the Quick visual, Below
             are the files you will need to modify, and the folders they are in.
           </Message>
@@ -64,30 +66,72 @@ class Template extends Component {
         <Segment color="teal" raised>
           <Message floating compact size="tiny">
             <p>
-              if you"re using VScode, or any kind of halway customized IDE,
-              choose "Typescript React" as a language. The colour coding and
-              automatic foratting with "Prettier" and "Beautify" and "ESLINT"
-              work well with this kit.
-            </p>
-            <p>
-              So, i did also want to include a personal touch with my first
-              contribution to any git, ever. (this page and the modifications to
-              the other files denoting "template"), so in addition to that, i"m
-              adding this link to a public Gist on github, a copy of my VScode
-              sync settings, and installed extensions
+              if you're using VScode, or any kind of halway customized IDE,
+              choose 'Typescript React' as a language. The colour coding and
+              automatic foratting with 'Prettier' and 'Beautify' and 'ESLINT'
+              work well with this kit. I also wanted to include a personal touch
+              with my first contribution to any git, ever. (this page and the
+              modifications to the other files denoting 'template'), so in
+              addition to that, i'm adding this link to a public Gist on github,
+              a copy of my VScode sync settings, and installed extensions i put
+              together painstakingly dialed in for this kit.
               <a href="https://gist.github.com/kaigouthro/b2c9cafae8a9a480b0802847c8cdba18">
                 . Check it here
               </a>
+              {' '}
               fork it to your own gist and use
+              {' '}
               <a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync">
                 {' '}
                 Vs settings sync addon.
               </a>
+              {' '}
+              I tooled it specially for this project. You wll still have to
+              'yarn add eslint tslint' and maybe one or two other things to make
+              it more 'you'.. But pretty much this is just my way of
+              contributing to the package, making it ~that~ mueasier to get
+              going. All the extensions and settings are react exclusive, not
+              just a general 'anything universal' set-up. It has functionality
+              and readability enhancements, a lot of theme goodness, the
+              material icons pack, and everything about colorizing and matching
+              things up, subtle underline pairs, and more. I Highly reccomend
+              {' '}
+              <strong>"Hack"</strong>
+              {' '}
+              as a font choice for your editor, but any
+              of these are fantastic:
+              {' '}
+              <a href="https://sourcefoundry.org/hack/">Hack</a>
+              , or
+              {' '}
+              <a href="https://fonts.google.com/specimen/Anonymous+Pro">
+                Anonymous Pro
+              </a>
+              , or
+              {' '}
+              <a href="https://fonts.google.com/specimen/Source+Code+Pro">
+                Source Code Pro
+              </a>
+              , or if you"re feeling futuristic
+              {' '}
+              <a href="https://fonts.google.com/specimen/Space+Mono">
+                Space Mono
+              </a>
+              . For the other newer coders like myself, Hopefully this gives you
+              a leap forward, and you don"t have to spend the hours i"m spending
+              making this more friendly a starter for people like me. Please
+              enjoy, and
+              {' '}
+              <strong>
+                Thank
+              </strong>
+              {' '}
+              the Original Creators and Maintainers of the project. they"re the real heroes.
             </p>
           </Message>
           <Container>
             <Divider />
-            <Grid columns={2} stackable>
+            <Grid columns={3} stackable>
               <Grid.Row>
                 <Grid.Column>
                   <Segment raised color="blue">
@@ -122,7 +166,7 @@ class Template extends Component {
                                             <List.Header>App.js</List.Header>
                                             <List.Description>
                                               You"ll find template has been
-                                              added to the main app here.
+                                              added to the main app here
                                             </List.Description>
                                           </List.Content>
                                         </List.Item>
@@ -144,8 +188,8 @@ class Template extends Component {
                                               Template.js
                                             </List.Header>
                                             <List.Description>
-                                              You"ll find template has been
-                                              added to the main app here.
+                                              This is the template page that is
+                                              added to the main app.
                                             </List.Description>
                                           </List.Content>
                                         </List.Item>
@@ -239,6 +283,9 @@ class Template extends Component {
                     </List>
                   </Segment>
                   <p />
+                </Grid.Column>
+                <Grid.Column>
+                  <Image centered src={searchtemplateimage} alt="search in vscode" rounded size="medium" />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
