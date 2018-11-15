@@ -29,14 +29,16 @@ class About extends Component {
           <a
             href="https://github.com/dongcai"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             @dongcai
           </a>
           ), Kévin Berthommier (
           <a
             href="https://github.com/bertho-zero"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             @bertho-zero
           </a>
           ) and was originally created by Erik Rasmussen (
@@ -62,8 +64,9 @@ class About extends Component {
           .
         </p>
         <h3>
-          Mini Bar <span style={{ color: "#aaa" }}>(not that kind)
-        </span>
+          Mini Bar
+          <span style={{ color: '#aaa' }}>(not that kind)
+          </span>
         </h3>
         <p>
           Hey! You found the mini info bar! The following component is
@@ -76,7 +79,8 @@ class About extends Component {
           <Button
             color={showKitten ? 'negative' : 'positive'}
             style={{ marginLeft: 50 }}
-            onClick={this.handleToggleKitten}>
+            onClick={this.handleToggleKitten}
+          >
             {showKitten ? 'No! Take it away!' : 'Yes! Please!'}
           </Button>
         </p>
