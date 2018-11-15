@@ -19,7 +19,7 @@ class About extends Component {
 
   render() {
     const { showKitten } = this.state;
-    const kitten = require(''./kitten.jpg');
+    const kitten = require('./kitten.jpg');
     return (
       <div className="container">
         <h1>About Us</h1>
