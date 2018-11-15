@@ -35,7 +35,7 @@ class About extends Component {
             rel='noopener noreferrer'>
             @dongcai
           </a>
-          ), Kévin Berthommier (
+          ), KÃ©vin Berthommier (
           <a
             href='https://github.com/bertho-zero'
             target='_blank'
@@ -84,7 +84,6 @@ class About extends Component {
             {showKitten ? 'No! Take it away!' : 'Yes! Please!'}
           </Button>
         </p>
-
         {showKitten && (
           <div>
             <img src={kitten} alt='kitchen' />
