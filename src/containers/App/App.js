@@ -18,7 +18,6 @@ import {
   Container, Message, Segment,
 } from 'semantic-ui-react';
 import Navigation from '../../components/Navigation/Navigation';
-import InfoBar from './../../components/InfoBar/InfoBar';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
@@ -160,8 +159,7 @@ class App extends Component {
           )}
           <Segment style={{ minHeight: '85vh', overflow: 'auto', maxHeight: '100%vh' }}>
             <Container style={{ maxHeighht: '99vmax' }}>
-              {renderRoutes(route.routes)}
-              <InfoBar />
+              { renderRoutes(route.routes) }
             </Container>
           </Segment>
           <Segment textAlign="center" vertical inverted attach="top">
