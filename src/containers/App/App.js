@@ -1,17 +1,24 @@
-import React, { Component } from 'react';
+import { Notifs } from 'components';
+import config from 'config';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
+import { push } from 'react-router-redux';
 import { provideHooks } from 'redial';
-import Helmet from 'react-helmet';
-import { Container, Message, Segment } from 'semantic-ui-react';
+import {
+  isLoaded as isAuthLoaded,
+  load as loadAuth,
+  logout,
+} from 'redux/modules/auth';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { Notifs, InfoBar } from 'components';
-import config from 'config';
+import {
+  Container, Message, Segment,
+} from 'semantic-ui-react';
 import Navigation from '../../components/Navigation/Navigation';
+import InfoBar from './../../components/InfoBar/InfoBar';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
@@ -21,12 +28,12 @@ import Navigation from '../../components/Navigation/Navigation';
     if (!isInfoLoaded(getState())) {
       await dispatch(loadInfo()).catch(() => null);
     }
-  }
+  },
 })
 @connect(
   state => ({
     notifs: state.notifs,
-    user: state.auth.user
+    user: state.auth.user,
   }),
   { logout, pushState: push }
 )
@@ -36,21 +43,21 @@ class App extends Component {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     user: PropTypes.shape({
-      email: PropTypes.string
+      email: PropTypes.string,
     }),
     notifs: PropTypes.shape({
-      global: PropTypes.array
+      global: PropTypes.array,
     }).isRequired,
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired,
   };
 
   static contextTypes = {
-    store: PropTypes.objectOf(PropTypes.any).isRequired
+    store: PropTypes.objectOf(PropTypes.any).isRequired,
   };
 
   static defaultProps = {
-    user: null
+    user: null,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -147,37 +154,43 @@ class App extends Component {
       ];
 
     return (
-      <div className={styles.app}>
+      <div style={{ minHeight: '100vh' }} ref={this.handleContextRef}>
         <Helmet {...config.app.head} />
-
-        <Navigation leftItems={leftItems} rightItems={rightItems} mobileOnly>
-          <Container>
-            {notifs.global && (
-              <Notifs
-                className={styles.notifs}
-                namespace="global"
-                NotifComponent={props => <Message warning>{props.message}</Message>}
-              />
-            )}
-            {renderRoutes(route.routes)}
-            <InfoBar />
-          </Container>
+        <Navigation
+          leftItems={leftItems}
+          rightItems={rightItems}
+          style={{ minHeight: '99vh' }}
+        >
+          {notifs.global && (
+            <Notifs
+              className={styles.notifs}
+              namespace="global"
+              NotifComponent={props => (
+                <Message warning>{props.message}</Message>
+              )}
+            />
+          )}
+          <Segment style={{ minHeight: '85vh', overflow: 'auto', maxHeight: '100%vh' }}>
+            <Container style={{ maxHeighht: '99vmax' }}>
+              {renderRoutes(route.routes)}
+              <InfoBar />
+            </Container>
+          </Segment>
+          <Segment textAlign="center" vertical inverted position="bottom">
+            <p>
+              Have questions? Ask for help
+              {' '}
+              <a
+                href="https://github.com/dongcai/react-redux-semantic-ui/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                on Github.
+              </a>
+              .
+            </p>
+          </Segment>
         </Navigation>
-
-        <Segment textAlign="center" vertical inverted>
-          <p>
-            Have questions? Ask for help
-            {' '}
-            <a
-              href="https://github.com/dongcai/react-redux-semantic-ui/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              on Github.
-            </a>
-            .
-          </p>
-        </Segment>
       </div>
     );
   }

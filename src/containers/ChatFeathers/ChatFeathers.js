@@ -76,7 +76,7 @@ class ChatFeathers extends Component {
     }
   };
 
-  render() { // SUIR.. made it all skinned with semanti-ui. lookss pretty.
+  render() {
     const { user, messages } = this.props;
     const { error } = this.state;
     return (
@@ -110,8 +110,8 @@ class ChatFeathers extends Component {
           </Form>
         </Segment>
         {user && (
-          <Segment color="teal" raised style={{ overflow: 'auto', maxHeight: 500 }}>
-            {messages.map(msg => (
+          <Segment color="teal" raised style={{ overflow: 'auto', maxHeight: '65vh' }}>
+            {messages.slice(0).reverse().map(msg => (
               <Message key={`chat.msg.${msg._id}`} raised size="tiny">
                 {msg.sentBy.email}
                 :&nbsp;&nbsp;
