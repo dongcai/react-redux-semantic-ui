@@ -52,7 +52,9 @@ class Template extends Component {
             <Header as="h2" icon>
               <Icon name="copy outline" />
               Template Page
-              <Header.Subheader>Adding pages to your app, and other help.. for noobs, by a noob.</Header.Subheader>
+              <Header.Subheader>
+                Adding pages to your app, and other help.. for noobs, by a noob.
+              </Header.Subheader>
             </Header>
           </Container>
           <Message floating compact size="tiny">
@@ -64,76 +66,89 @@ class Template extends Component {
           </Message>
         </Segment>
         <Segment color="teal" raised>
-          <Message floating compact size="tiny">
-            <p>
-              if you're using VScode, or any kind of halway customized IDE,
-              choose 'Typescript React' as a language. The colour coding and
-              automatic foratting with 'Prettier' and 'Beautify' and 'ESLINT'
-              work well with this kit. I also wanted to include a personal touch
-              with my first contribution to any git, ever. (this page and the
-              modifications to the other files denoting 'template'), so in
-              addition to that, i'm adding this link to a public Gist on github,
-              a copy of my VScode sync settings, and installed extensions i put
-              together painstakingly dialed in for this kit.
-              <a href="https://gist.github.com/kaigouthro/b2c9cafae8a9a480b0802847c8cdba18">
-                . Check it here
-              </a>
-              {' '}
-              fork it to your own gist and use
-              {' '}
-              <a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync">
-                {' '}
-                Vs settings sync addon.
-              </a>
-              {' '}
-              I tooled it specially for this project. You wll still have to
-              'yarn add eslint tslint' and maybe one or two other things to make
-              it more 'you'.. But pretty much this is just my way of
-              contributing to the package, making it ~that~ mueasier to get
-              going. All the extensions and settings are react exclusive, not
-              just a general 'anything universal' set-up. It has functionality
-              and readability enhancements, a lot of theme goodness, the
-              material icons pack, and everything about colorizing and matching
-              things up, subtle underline pairs, and more. I Highly reccomend
-              {' '}
-              <strong>"Hack"</strong>
-              {' '}
-              as a font choice for your editor, but any
-              of these are fantastic:
-              {' '}
-              <a href="https://sourcefoundry.org/hack/">Hack</a>
-              , or
-              {' '}
-              <a href="https://fonts.google.com/specimen/Anonymous+Pro">
-                Anonymous Pro
-              </a>
-              , or
-              {' '}
-              <a href="https://fonts.google.com/specimen/Source+Code+Pro">
-                Source Code Pro
-              </a>
-              , or if you"re feeling futuristic
-              {' '}
-              <a href="https://fonts.google.com/specimen/Space+Mono">
-                Space Mono
-              </a>
-              . For the other newer coders like myself, Hopefully this gives you
-              a leap forward, and you don"t have to spend the hours i"m spending
-              making this more friendly a starter for people like me. Please
-              enjoy, and
-              {' '}
-              <strong>
-                Thank
-              </strong>
-              {' '}
-              the Original Creators and Maintainers of the project. they"re the real heroes.
-            </p>
-          </Message>
+          <Grid columns={2} stackable>
+            <Grid.Column size="equal">
+              <Message floating compact size="tiny">
+                <p>
+                  if you're using VScode, or any kind of halway customized IDE,
+                  choose 'Typescript React' as a language. The colour coding and
+                  automatic foratting with 'Prettier' and 'Beautify' and
+                  'ESLINT' work well with this kit. I also wanted to include a
+                  personal touch with my first contribution to any git, ever.
+                  (this page and the modifications to the other files denoting
+                  'template'), so in addition to that, i'm adding this link to a
+                  public Gist on github, a copy of my VScode sync settings, and
+                  installed extensions i put together painstakingly dialed in
+                  for this kit.
+                  <a href="https://gist.github.com/kaigouthro/b2c9cafae8a9a480b0802847c8cdba18">
+                    . Check it here
+                  </a>
+                  {' '}
+                  fork it to your own gist and use
+                  {' '}
+                  <a href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync">
+                    {' '}
+                    Vs settings sync addon.
+                  </a>
+                  {' '}
+                  I tooled it specially for this project. You wll still have to
+                  'yarn add eslint tslint' and maybe one or two other things to
+                  make it more 'you'.. But pretty much this is just my way of
+                  contributing to the package, making it ~that~ mueasier to get
+                  going. All the extensions and settings are react exclusive,
+                  not just a general 'anything universal' set-up. It has
+                  functionality and readability enhancements, a lot of theme
+                  goodness, the material icons pack, and everything about
+                  colorizing and matching things up, subtle underline pairs, and
+                  more. I Highly reccomend
+                  {' '}
+                  <strong>
+                    "Hack"
+                  </strong>
+                  {' '}
+                  as a font choice for your editor, but any of these are fantastic:
+                  {' '}
+                  <a href="https://sourcefoundry.org/hack/">Hack</a>
+                  , or
+                  {' '}
+                  <a href="https://fonts.google.com/specimen/Anonymous+Pro">
+                    Anonymous Pro
+                  </a>
+                  , or
+                  {' '}
+                  <a href="https://fonts.google.com/specimen/Source+Code+Pro">
+                    Source Code Pro
+                  </a>
+                  , or if you"re feeling futuristic
+                  {' '}
+                  <a href="https://fonts.google.com/specimen/Space+Mono">
+                    Space Mono
+                  </a>
+                  . For the other newer coders like myself, Hopefully this gives you a leap forward, and you don"t have to spend the hours i"m spending making this more friendly a starter for people like me. Please enjoy, and
+                  {' '}
+                  <strong>
+                    Thank
+                  </strong>
+                  {' '}
+                  the Original Creators and Maintainers of the project. they are the real heroes.
+                </p>
+              </Message>
+            </Grid.Column>
+            <Grid.Column size="equal">
+              <Image
+                centered
+                fluid
+                src={searchtemplateimage}
+                alt="search in  vscode"
+                rounded
+              />
+            </Grid.Column>
+          </Grid>
           <Container>
             <Divider />
-            <Grid columns={3} stackable>
+            <Grid columns={2} stackable>
               <Grid.Row>
-                <Grid.Column>
+                <Grid.Column width="equal">
                   <Segment raised color="blue">
                     <List>
                       <List.Item>
@@ -235,9 +250,9 @@ class Template extends Component {
                     </List>
                   </Segment>
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column width="equal">
                   <Segment raised color="blue">
-                    <Header as="h1">
+                    <Header as="h2">
                       <Icon
                         bordered
                         inverted
@@ -283,9 +298,6 @@ class Template extends Component {
                     </List>
                   </Segment>
                   <p />
-                </Grid.Column>
-                <Grid.Column>
-                  <Image centered src={searchtemplateimage} alt="search in vscode" rounded size="medium" />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
