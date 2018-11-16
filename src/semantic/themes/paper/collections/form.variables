@@ -1,0 +1,2 @@
+@formErrorColor: darken(@negativeColor, 20%);
+@inputBorderRadius: 0;

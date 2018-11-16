@@ -91,38 +91,26 @@ class App extends Component {
         as: 'Link',
         content: 'Chat',
         key: 'chat',
-        to: '/chat'
+        to: '/chat',
       },
       {
         as: 'Link',
         content: 'Chat with Feathers',
         key: 'chat-with-feathers',
-        to: '/chat-with-feathers'
+        to: '/chat-with-feathers',
       },
       {
         as: 'Link',
-        content: 'Widget',
-        key: 'widget',
-        to: '/widgets'
-      },
-      {
-        as: 'Link',
-        content: 'Survey',
-        key: 'survey',
-        to: '/survey'
-      },
-      {
-        as: 'Link',
-        content: 'About',
-        key: 'about',
-        to: '/about'
+        content: 'Thedash',
+        key: 'thedash',
+        to: '/thedash',
       },
       {
         as: 'Link',
         content: 'Template',
         key: 'template',
-        to: '/template'
-      }
+        to: '/template',
+      },
     ];
 
     if (!user) {
@@ -135,22 +123,22 @@ class App extends Component {
           as: 'Link',
           content: 'Login',
           key: 'login',
-          to: '/login'
+          to: '/login',
         },
         {
           as: 'Link',
           content: 'Register',
           key: 'register',
-          to: '/register'
-        }
+          to: '/register',
+        },
       ]
       : [
         {
           as: 'Link',
           content: 'Logout',
           key: 'logout',
-          to: '/logout'
-        }
+          to: '/logout',
+        },
       ];
 
     return (
@@ -176,7 +164,7 @@ class App extends Component {
               <InfoBar />
             </Container>
           </Segment>
-          <Segment textAlign="center" vertical inverted position="bottom">
+          <Segment textAlign="center" vertical inverted attach="top">
             <p>
               Have questions? Ask for help
               {' '}

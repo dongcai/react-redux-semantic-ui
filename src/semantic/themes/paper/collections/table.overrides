@@ -1,0 +1,7 @@
+.ui.selectable.table {
+  > tbody > tr,
+  > tbody > tr > th,
+  > tbody > tr > td {
+    transition: all 0.2s;
+  }
+}

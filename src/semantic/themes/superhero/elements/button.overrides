@@ -1,0 +1,4 @@
+.ui.inverted.button:focus,
+.ui.inverted.button:hover {
+  background-color: @gray-dark;
+}

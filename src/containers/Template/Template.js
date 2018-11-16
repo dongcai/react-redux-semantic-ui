@@ -68,7 +68,7 @@ class Template extends Component {
         <Segment color="teal" raised>
           <Grid columns={2} stackable>
             <Grid.Column size="equal">
-              <Message floating compact size="small">
+              <Message floating compact size="tiny">
                 <p>
                   if you're using VScode, or any kind of halway customized IDE,
                   choose 'Typescript React' as a language. The colour coding and
@@ -137,7 +137,7 @@ class Template extends Component {
             <Grid.Column size="equal">
               <Image
                 centered
-                size="large"
+                fluid
                 src={searchtemplateimage}
                 alt="search in  vscode"
                 rounded

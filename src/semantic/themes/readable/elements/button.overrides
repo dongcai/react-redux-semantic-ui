@@ -1,0 +1,17 @@
+.ui.button {
+  border: 1px solid #ddd;
+}
+
+.ui.basic.buttons .button,
+.ui.basic.button {
+  border: none;
+}
+
+.ui.basic.button:focus,
+.ui.basic.button:hover {
+  text-decoration: underline;
+}
+
+.ui.buttons .button:first-child {
+  border-left: 1px solid #ddd;
+}

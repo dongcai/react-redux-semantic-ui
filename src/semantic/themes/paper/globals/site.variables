@@ -1,0 +1,37 @@
+@gray-base: #000;
+@gray-darker: lighten(@gray-base, 13.5%); // #222
+@gray-dark: #212121;
+@gray: #666;
+@gray-light: #bbb;
+@gray-lighter: lighten(@gray-base, 93.5%); // #eee
+
+@primaryColor: #2196f3;
+@positiveColor: #4caf50;
+@positiveTextColor: #4caf50;
+@infoColor: #9c27b0;
+@infoTextColor: #9c27b0;
+@warningColor: #ff9800;
+@warningTextClor: #ff9800;
+@negativeColor: #e51c23;
+@negativeTextColor: #e51c23;
+
+@textcolor: @gray;
+@fontName: "Roboto";
+@emSize: 13px;
+@fontSize: 13px;
+
+@h1: 56 / 13;
+@h2: 45 / 13;
+@h3: 34 / 13;
+@h4: 24 / 13;
+@h5: 20 / 13;
+
+@lineHeight: 1.846;
+
+@headerFontWeight: 1.2;
+
+@absoluteBorderRadius: 4px;
+
+@infoBackgroundColor: #e1bee7;
+@warningBackgroundColor: #ffe0b2;
+@negativeBackgroundColor: #f9bdbb;

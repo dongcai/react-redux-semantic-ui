@@ -1,0 +1,10 @@
+@minHeight: 65px;
+@itemTextColor: @textColor;
+@background: @pageBackground;
+@itemTextColor: @linkColor;
+@hoverItemTextColor: @linkColor;
+@activeItemTextColor: @linkColor;
+@activeItemBackground: transparent;
+@labelBackground: @linkColor;
+@dividerSize: 0;
+@arrowBorder: 2px solid @gray;

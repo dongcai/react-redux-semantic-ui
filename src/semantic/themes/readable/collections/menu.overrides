@@ -1,0 +1,19 @@
+.ui.menu:not(.pointing) .item {
+  margin: 10px 0px;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.ui.item.menu:not(.pointing) {
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+  .active.item {
+    border: 1px solid #ddd;
+  }
+}
+
+// make active item in vertical menu more detectable
+.ui.vertical.menu .active.item {
+  color: darken(@primaryColor, 15%);
+  font-weight: bold;
+}

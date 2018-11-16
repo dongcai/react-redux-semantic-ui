@@ -1,0 +1,15 @@
+.ui.form input,
+.ui.form select,
+.ui.form .ui.dropdown,
+.ui.form textarea {
+  border-width: 0 0 1px 0 !important;
+  border-radius: 0;
+}
+
+.ui.form input:focus,
+.ui.form select:focus,
+.ui.form .ui.dropdown:focus,
+.ui.form textarea:focus {
+  border-width: 0 0 2px 0 !important;
+  border-radius: 0;
+}

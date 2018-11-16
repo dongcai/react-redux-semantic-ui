@@ -1,8 +1,3 @@
 /*******************************
      User Global Variables
-     Check http://learnsemantic.com/developing/customizing.html
 *******************************/
-
-/*---  Brand Colors  ---*/
-@blue       : #2D5882;
-@black      : #152E4C;

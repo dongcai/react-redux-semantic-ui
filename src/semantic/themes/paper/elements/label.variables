@@ -1,0 +1,2 @@
+@fontWeight: normal;
+@ribbonShadowColor: @gray-lighter;
