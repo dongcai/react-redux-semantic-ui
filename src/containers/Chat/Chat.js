@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { socket } from 'app';
-
-import { Button, Input } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Button, Container, Icon, Input, Label } from 'semantic-ui-react';
 
 @connect(state => ({ user: state.auth.user }))
 class Chat extends Component {
@@ -58,19 +57,10 @@ class Chat extends Component {
     const styles = require('./Chat.scss');
 
     return (
-      <div className={`${styles.chat} container`}>
+      <di className={`${styles.chat} container`}>
         <h1>Chat</h1>
 
-        <div>
-          <ul>
-            {this.state.messages.map(msg => (
-              <li key={`chat.msg.${msg.id}`}>
-                {msg.from}
-:
-                {msg.text}
-              </li>
-            ))}
-          </ul>
+        <Container>
           <form onSubmit={this.handleSubmit}>
             <Input
               type="text"
@@ -88,8 +78,22 @@ class Chat extends Component {
               Send
             </Button>
           </form>
-        </div>
-      </div>
+          <ul>
+            {this.state.messages.slice(0).reverse().map(msg => (
+              <li key={`chat.msg.${msg.id}`}>
+                <Label as='a' outline inverted>
+                  <Icon name='chat' color="blue" />
+                  {msg.from}
+                </Label>
+                {' '}
+                <Label basic color='teal' pointing='left'>
+                  {msg.text}
+                </Label>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </di>
     );
   }
 }
