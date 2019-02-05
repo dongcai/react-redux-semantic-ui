@@ -2,7 +2,7 @@
   "name": "react-redux-semantic-ui",
   "description": "Example of an isomorphic (universal) webapp using react redux, semantic-ui and hot reloading",
   "authors": [
-    "Dong Cai <dcai@live.com> (https://github.com/dongcai)"
+    "Dong Cai <adam@deniapps.com> (https://github.com/dongcai)"
   ],
   "contributors": [
     "Erik Rasmussen <rasmussenerik@gmail.com> (https://github.com/erikras)",
